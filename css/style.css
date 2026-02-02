@@ -395,101 +395,50 @@ nav a {
     transform: translateY(0);
 }
 
-
-/* title row */
+/* =========================
+   Shared title layout
+========================= */
 .skill-title {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-/* icon */
+/* =========================
+   ICON BASE
+========================= */
+.github-icon,
 .leetcode-icon {
     position: relative;
     display: inline-flex;
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
-/* svg */
+.github-icon img,
 .leetcode-icon img {
     width: 20px;
     height: 20px;
-    filter: invert(1) brightness(1.4);
-    transition: 0.25s ease;
-}
-
-/* glow on hover */
-.leetcode-icon:hover img {
-    transform: scale(1.25);
-    filter: invert(1) brightness(2) drop-shadow(0 0 6px #00ffb4);
-}
-
-/* popup */
-.leetcode-popup {
-    position: absolute;
-    top: -90px;
-    left: -55px;
-
-    width: 150px;
-    padding: 10px;
-
-    background: #0b0f12;
-    border: 1px solid #00ffb4;
-    border-radius: 6px;
-
-    font-size: 12px;
-    text-align: center;
-
-    opacity: 0;
-    transform: translateY(8px);
-    pointer-events: none;
-
-    transition: 0.25s ease;
-}
-
-/* show popup */
-.leetcode-icon:hover .leetcode-popup {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ===== title layout shared ===== */
-.skill-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* ===== GitHub icon ===== */
-
-.github-icon {
-    position: relative;
-    display: inline-flex;
-    width: 20px;
-    height: 20px;
-}
-
-/* svg */
-.github-icon img {
-    width: 20px;
-    height: 20px;
     filter: invert(1);
-    transition: 0.25s ease;
+    transition: transform 0.25s ease, filter 0.25s ease;
 }
 
-/* hover glow */
-.github-icon:hover img {
-    transform: scale(1.25);
+/* desktop hover glow */
+.github-icon:hover img,
+.leetcode-icon:hover img {
+    transform: scale(1.2);
     filter: invert(1) drop-shadow(0 0 6px #00ffb4);
 }
 
-/* ===== popup ===== */
-
-.github-popup {
+/* =========================
+   POPUP (desktop only)
+========================= */
+.github-popup,
+.leetcode-popup {
     position: absolute;
-    top: -95px;
-    left: -65px;
+    top: -90px;
+    left: -60px;
 
     width: 170px;
     padding: 10px;
@@ -509,8 +458,21 @@ nav a {
     z-index: 100;
 }
 
-/* show */
-.github-icon:hover .github-popup {
+/* show on hover (desktop) */
+.github-icon:hover .github-popup,
+.leetcode-icon:hover .leetcode-popup {
     opacity: 1;
     transform: translateY(0);
+}
+
+
+/* =========================
+   MOBILE FIX
+   disable popup completely
+========================= */
+@media (hover: none) {
+    .github-popup,
+    .leetcode-popup {
+        display: none !important;
+    }
 }
