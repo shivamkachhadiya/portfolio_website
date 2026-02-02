@@ -38,6 +38,7 @@ const hero = document.getElementById("hero");
 const heroText = document.getElementById("heroText");
 const heroImage = document.getElementById("heroImage");
 
+
 if (hero && heroText && heroImage) {
 
     let ticking = false;

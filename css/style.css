@@ -146,11 +146,16 @@ nav a {
 
 /* ===== HERO SECTION (System Design Theme) ===== */
 .hero {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 80px 20px;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    min-height: 100vh;
+    padding: 80px 8%;
+}
+.hero-content {
+    flex: 1;
+    z-index: 2;
 }
 
 /* tablet */
@@ -230,8 +235,8 @@ nav a {
 }
 
 .profile-img {
-    width: 100%;
-    max-width: 320px;
+     width: 420px;
+    max-width: 100%;
     height: auto;
     aspect-ratio: 3/4;
     object-fit: cover;
@@ -710,4 +715,51 @@ height: 100%; /* Force card to fill the grid cell */
 /* optional smoother feeling */
 .hero {
     overflow: hidden;
+}
+/* ======================================================
+   MOBILE BREAKPOINT
+   ====================================================== */
+
+@media (max-width: 768px) {
+
+    .hero {
+        flex-direction: column;   /* stack vertically */
+        text-align: center;
+        padding-top: 120px;
+        gap: 40px;
+    }
+
+    .hero-content {
+        order: 1;
+    }
+
+    .image-container {
+        order: 2;
+        width: 100%;
+    }
+
+    .profile-img {
+        width: 85%;
+        max-width: 320px;
+    }
+
+    /* smaller fonts for mobile */
+    .hero-name {
+        font-size: 34px;
+    }
+
+    .hero-role {
+        font-size: 22px;
+    }
+
+    .hero-summary {
+        font-size: 14px;
+    }
+
+    /* buttons stacked nicely */
+    .cta-group {
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+    }
 }
