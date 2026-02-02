@@ -222,10 +222,21 @@ nav a {
 .cursor-ring {
     width: 30px; height: 30px;
     border: 1px solid var(--terminal-green);
+        opacity: 0;
+    transition: opacity 0.15s ease, transform 0.15s ease;
     position: fixed; border-radius: 50%;
     pointer-events: none; z-index: 9998;
     transition: transform 0.1s ease-out;
 }
+
+
+/* show only on devices with mouse */
+@media (hover: hover) and (pointer: fine) {
+    body {
+        cursor: none;
+    }
+}
+
 
 /* ===== ANIMATIONS ===== */
 @keyframes blink {

@@ -1,41 +1,84 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ===== PROFILE SCROLL EFFECT ===== */
-    const pic = document.getElementById("profilePic");
-
-    window.addEventListener("scroll", () => {
-        const y = window.scrollY;
-
-        let scale = 1 - y / 1200;
-        if (scale < 0.75) scale = 0.75;
-
-        let gray = y / 600;
-        if (gray > 1) gray = 1;
-
-        let opacity = 1 - y / 1000;
-        if (opacity < 0.4) opacity = 0.4;
-
-        pic.style.transform = `scale(${scale})`;
-        pic.style.filter = `grayscale(${gray})`;
-        pic.style.opacity = opacity;
-    });
-
-
-    /* ===== CUSTOM CURSOR ===== */
     const dot = document.querySelector(".cursor-dot");
     const ring = document.querySelector(".cursor-ring");
 
+    /* ========================
+       DESKTOP MOUSE
+    ======================== */
     window.addEventListener("mousemove", e => {
-        dot.style.left = e.clientX + "px";
-        dot.style.top = e.clientY + "px";
-
-        ring.style.left = e.clientX - 14 + "px";
-        ring.style.top = e.clientY - 14 + "px";
+        moveCursor(e.clientX, e.clientY);
     });
 
+
+    /* ========================
+       MOBILE TOUCH SUPPORT
+    ======================== */
+
+    window.addEventListener("touchstart", e => {
+        const t = e.touches[0];
+        showCursor();
+        moveCursor(t.clientX, t.clientY);
+        ring.style.transform = "scale(1.8)";
+    });
+
+    window.addEventListener("touchmove", e => {
+        const t = e.touches[0];
+        moveCursor(t.clientX, t.clientY);
+    });
+
+    window.addEventListener("touchend", () => {
+        ring.style.transform = "scale(1)";
+        hideCursor();
+    });
+
+
+    /* ========================
+       FUNCTIONS
+    ======================== */
+
+    function moveCursor(x, y) {
+        dot.style.left = x + "px";
+        dot.style.top = y + "px";
+
+        ring.style.left = x - 14 + "px";
+        ring.style.top = y - 14 + "px";
+    }
+
+    function showCursor() {
+        dot.style.opacity = 1;
+        ring.style.opacity = 1;
+    }
+
+    function hideCursor() {
+        dot.style.opacity = 0;
+        ring.style.opacity = 0;
+    }
+
+
+    /* ========================
+       HOVER/TAP GROW
+    ======================== */
+
     document.querySelectorAll("a, button, .profile-img").forEach(el => {
-        el.addEventListener("mouseenter", () => ring.style.transform = "scale(1.8)");
-        el.addEventListener("mouseleave", () => ring.style.transform = "scale(1)");
+
+        el.addEventListener("mouseenter", () => {
+            ring.style.transform = "scale(1.8)";
+        });
+
+        el.addEventListener("mouseleave", () => {
+            ring.style.transform = "scale(1)";
+        });
+
+        /* mobile tap */
+        el.addEventListener("touchstart", () => {
+            ring.style.transform = "scale(1.8)";
+        });
+
+        el.addEventListener("touchend", () => {
+            ring.style.transform = "scale(1)";
+        });
+
     });
 
 });
