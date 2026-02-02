@@ -779,75 +779,163 @@ height: 100%; /* Force card to fill the grid cell */
 /* ======================================================
    FOOTER (Cyber Terminal Style)
    ====================================================== */
+/* =====================================================
+   FOOTER STYLES (PRO TERMINAL LOOK)
+===================================================== */
 
 .footer {
-    border-top: 1px solid rgba(0,255,180,0.25);
-    background: rgba(0, 10, 8, 0.7);
-    backdrop-filter: blur(6px);
-    padding: 60px 8% 25px;
     margin-top: 120px;
+    padding: 60px 30px 30px;
+    border-top: 1px solid rgba(0,255,180,0.25);
+    background: rgba(0,255,180,0.03);
+    backdrop-filter: blur(10px);
 }
 
 /* layout */
-.footer-container {
+.footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 40px;
-    align-items: center;
 }
 
-/* terminal text */
-.footer-terminal {
-    font-family: 'JetBrains Mono', monospace;
+/* terminal look */
+.footer-terminal,
+.footer-worldclock,
+.footer-contact {
     font-size: 14px;
+    line-height: 1.8;
+}
+
+/* highlight text */
+.footer .highlight {
     color: #00ffb4;
-}
-
-.terminal-line {
-    opacity: 0;
-    transform: translateY(10px);
-}
-
-.terminal-line.highlight {
-    font-weight: 700;
+    font-weight: bold;
     letter-spacing: 2px;
 }
 
-/* links */
-.footer-links,
-.footer-social {
+/* ================= WORLD CLOCK ================= */
+
+.clock-list p {
+    margin-bottom: 4px;
+    opacity: 0.9;
+}
+
+/* ================= CONTACT FORM ================= */
+
+.footer-contact form {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.footer a {
-    color: #9cebd6;
-    text-decoration: none;
-    font-size: 14px;
-    transition: 0.25s ease;
+.footer-contact input,
+.footer-contact textarea {
+    background: transparent;
+    border: 1px solid rgba(0,255,180,0.3);
+    padding: 8px;
+    color: white;
+    font-family: inherit;
 }
 
-.footer a:hover {
+.footer-contact textarea {
+    min-height: 80px;
+}
+
+.footer-contact button {
+    background: transparent;
+    border: 1px solid #00ffb4;
     color: #00ffb4;
-    text-shadow: 0 0 6px #00ffb4;
+    padding: 8px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* bottom */
+.footer-contact button:hover {
+    background: #00ffb4;
+    color: black;
+}
+
+/* ================= BOTTOM ================= */
+
 .footer-bottom {
-    margin-top: 40px;
     text-align: center;
+    margin-top: 50px;
     font-size: 12px;
     opacity: 0.6;
-    border-top: 1px solid rgba(0,255,180,0.15);
-    padding-top: 15px;
 }
 
-/* ======================================================
-   MOBILE
-   ====================================================== */
+/* =====================================================
+   SOCIAL ICONS (Footer Contact)
+===================================================== */
+/* =====================================================
+   SOCIAL ICONS (Footer Contact)
+===================================================== */
 
+.social-icons {
+    display: grid;
+    /* Increased min-width from 160px to 250px */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 12px;
+    margin-bottom: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.5fr; /* Takes up 100% of the parent container */
+    gap: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+/* Button Style */
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+padding: 12px 20px; /* Increased from 8px 12px */
+    border: 1px solid rgba(0, 255, 180, 0.25);
+    border-radius: 8px;
+
+    text-decoration: none;
+    color: #00ffb4;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+
+    transition: all 0.3s ease;
+}
+
+/* Icon Image */
+.social-btn img {
+    width: 18px;
+    height: 18px;
+    filter: invert(1);
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effects */
+.social-btn:hover {
+    border-color: #00ffb4;
+    box-shadow: 0 0 10px #00ffb4;
+    transform: translateY(-3px);
+}
+
+.social-btn:hover img {
+    transform: scale(1.2);
+}
+
+/* VIT special style */
+.social-btn.vit {
+    border-color: #7cff00;
+    color: #7cff00;
+}
+
+.social-btn.vit:hover {
+    box-shadow: 0 0 10px #7cff00;
+}
+
+/* Responsive Mobile Layout */
 @media (max-width: 768px) {
+    .footer {
+        padding: 40px 20px;
+    }
+
     .footer-container {
         grid-template-columns: 1fr;
         text-align: center;
@@ -857,4 +945,15 @@ height: 100%; /* Force card to fill the grid cell */
     .footer-social {
         align-items: center;
     }
+
+    .social-icons {
+        grid-template-columns: 1fr;
+    }
+
+    .social-btn {
+        justify-content: center;
+    }
 }
+
+
+

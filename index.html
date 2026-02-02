@@ -45,9 +45,8 @@
 
         <div>
             <a href="#about">About</a>
-            <a href="#skills">Skills</a>
+            <a href="#skills">Project</a>
             <a href="#education">Education</a>
-            <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
@@ -288,35 +287,97 @@
      FOOTER / CONTACT SECTION
      Terminal styled animated professional footer
      ===================================================== -->
+    <!-- ===================================================== -->
+    <!-- FOOTER : Terminal Style + World Clock + Contact Form -->
+    <!-- ===================================================== -->
     <footer id="contact" class="footer">
 
-        <div class="footer-container">
+        <div class="footer-grid">
 
-            <!-- LEFT : terminal message -->
+            <!-- ================= LEFT : TERMINAL INFO ================= -->
             <div class="footer-terminal">
-                <p class="terminal-line">>> Connection Closed</p>
-                <p class="terminal-line">>> System Stable</p>
-                <p class="terminal-line highlight">END_OF_TRANSMISSION</p>
+                <p>> SYSTEM_STATUS : STABLE</p>
+                <p>> VISITORS : <span id="visitorCount">0</span></p>
+                <p>> LOCAL_TIME : <span id="liveTime"></span></p>
+                <p class="highlight">END_OF_TRANSMISSION</p>
             </div>
 
-            <!-- CENTER : quick links -->
-            <div class="footer-links">
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#education">Education</a>
-                <a href="#projects">Projects</a>
+
+            <!-- ================= CENTER : WORLD CLOCK ================= -->
+            <div class="footer-worldclock">
+
+                <h4>// GLOBAL_TIME</h4>
+
+                <div class="clock-list">
+                    <p>🌎 UTC : <span id="utc"></span></p>
+                    <p>🇮🇳 India : <span id="india"></span></p>
+                    <p>🇺🇸 New York : <span id="ny"></span></p>
+                    <p>🇬🇧 London : <span id="london"></span></p>
+                    <p>🇯🇵 Tokyo : <span id="tokyo"></span></p>
+                    <p>🇦🇺 Sydney : <span id="sydney"></span></p>
+                    <p>🇧🇷 Brazil : <span id="brazil"></span></p>
+                </div>
+
             </div>
 
-            <!-- RIGHT : social -->
-            <div class="footer-social">
-                <a href="https://github.com/shivamkachhadiya" target="_blank">GitHub</a>
-                <a href="assets/resume.pdf" download>Resume</a>
-                <a href="mailto:your@email.com">Contact</a>
+
+            <!-- ================= RIGHT : CONTACT FORM ================= -->
+            <!-- ================= RIGHT : CONTACT + SOCIAL ================= -->
+            <div class="footer-contact">
+
+                <h4>// CONTACT_ME</h4>
+
+                <!-- ===== SOCIAL ICON ROW ===== -->
+                <div class="social-icons">
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/shivam012/" target="_blank" class="social-btn">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"
+                            alt="LinkedIn">
+                        <span>LinkedIn: </span>Shivam Kachhadiya
+                    </a>
+
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/9712798452" target="_blank" class="social-btn">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg"
+                            alt="WhatsApp">
+                        <span>WhatsApp: </span><span>9712798452</span>
+                    </a>
+
+                    <!-- Personal Gmail -->
+                    <a href="mailto:shivamkachhadiya012@gmail.com" class="social-btn">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email">
+                        <span>Personal Mail: shivamkachhadiya012@gmail.com</span>
+                    </a>
+
+                    <!-- Academic Gmail (VIT) -->
+                    <a href="mailto:kachhadiya.shivam2025@vitstudent.ac.in" class="social-btn vit">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googleclassroom.svg"
+                            alt="Academic Mail">
+                        <span>VIT Mail: kachhadiya.shivam2025@vitstudent.ac.in</span>
+                    </a>
+
+                </div>
+
+
+                <!-- ===== CONTACT FORM ===== -->
+                <form action="mailto:shivamkachhadiya68@gmail.com" method="POST" enctype="text/plain">
+
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" placeholder="Message..." required></textarea>
+
+                    <button type="submit">Send Message →</button>
+
+                </form>
+
             </div>
+
 
         </div>
 
-        <!-- bottom copyright -->
+
+        <!-- ================= BOTTOM ================= -->
         <div class="footer-bottom">
             © <span id="year"></span> Shivam Kachhadiya — All Rights Reserved
         </div>
@@ -324,8 +385,10 @@
     </footer>
 
 
+
     <!-- JS (ALWAYS before body close) -->
     <script src="js/main.js"></script>
+    <script src="js/footer.js"></script>
 
 </body>
 
