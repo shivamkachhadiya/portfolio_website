@@ -62,34 +62,21 @@ nav a {
 
 /* ===== HERO SECTION (System Design Theme) ===== */
 .hero {
-        min-height: 100svh; /* better mobile support */
-
-    display: flex;
-    flex-direction: column; /* Mobile First */
-    align-items: center;
-    justify-content: center;
-    padding: 120px 5% 60px 5%;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 40px;
-    text-align: center;
+    padding: 80px 20px;
+    align-items: center;
 }
 
-@media (min-width: 992px) {
+/* tablet */
+@media (min-width: 768px) {
     .hero {
-        flex-direction: row;
-        text-align: left;
-        justify-content: space-between;
-        padding: 100px 8%;
+        grid-template-columns: 1.2fr 1fr;
+        padding: 120px 60px;
     }
 }
 
-.hero-left {
-    flex: 1;
-    max-width: 100%;
-}
-
-@media (min-width: 992px) {
-    .hero-left { max-width: 60%; }
-}
 
 /* Typography with Clamp for Responsiveness */
 .hero-name {
@@ -158,20 +145,17 @@ nav a {
     margin: 0 auto;
 }
 
-
 .profile-img {
     width: 100%;
-    max-width: 380px;
+    max-width: 320px;
     height: auto;
+    aspect-ratio: 3/4;
+    object-fit: cover;
 
-    /* IMPORTANT */
-    object-fit: contain;   /* NEVER cut */
-    aspect-ratio: auto;
+    border-radius: 18px;
+    border: 1px solid #00ffaa33;
 
-    border: 1px solid var(--system-blue);
-    display: block;
-
-    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+    margin: auto;
 }
 
 
@@ -237,182 +221,151 @@ nav a {
     }
 }
 
+/* ---------------------------------------------------updated css after skills------------------------------------------- */
 
-/* ===== ANIMATIONS ===== */
+/* ======================================================
+   GLOBAL RESET
+====================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+:root {
+    --accent: #00ffb4;
+    --card-bg: rgba(0,255,170,0.04);
+    --card-border: rgba(0,255,170,0.25);
+    --card-hover: #00ffb4;
+}
+
+
+
+/* ======================================================
+   ANIMATIONS
+====================================================== */
+
 @keyframes blink {
-    0%, 100% { opacity: 1; }
+    0%,100% { opacity: 1; }
     50% { opacity: 0.3; }
 }
 
-/* ===== SECTIONS (Skills/Projects) ===== */
-/* ===== SKILLS SECTION ===== */
+
+
+/* ======================================================
+   SECTION BASE
+====================================================== */
 
 .skills-section {
-    margin-top: 120px;
+    padding: 80px 20px;
+    margin-top: 80px;
 }
 
 .section-title {
-    color: #00ffb4;
-    margin-bottom: 50px;
+    color: var(--accent);
+    margin-bottom: 40px;
     letter-spacing: 2px;
+    font-size: 20px;
 }
 
-/* rows */
-.skills-row {
+
+
+/* ======================================================
+   RESPONSIVE GRID (MOBILE FIRST)
+====================================================== */
+
+.skills-grid {
     display: grid;
-    gap: 30px;
-    margin-bottom: 35px;
-}
+    gap: 20px;
 
-/* layouts */
-.skills-row.primary {
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-}
-
-.skills-row:not(.primary):not(.tools) {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-
-.skills-row.tools {
+    /* mobile */
     grid-template-columns: 1fr;
 }
 
-/* cards */
+/* tablet */
+@media (min-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* desktop */
+@media (min-width: 1200px) {
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+
+/* ======================================================
+   CARDS
+====================================================== */
+
 .skill-card {
-    background: rgba(0, 255, 170, 0.04);
-    border: 1px solid rgba(0, 255, 170, 0.25);
-    padding: 28px;
-    border-radius: 10px;
-    transition: 0.25s ease;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 22px;
+    border-radius: 12px;
+
     backdrop-filter: blur(6px);
+
+    transition: 0.25s ease;
 }
 
 .skill-card:hover {
-    transform: translateY(-6px);
-    border-color: #00ffb4;
+    transform: translateY(-5px);
+    border-color: var(--card-hover);
 }
 
-/* emphasis */
-.skill-card.wide {
-    font-size: 15px;
-}
-
-.skill-card.small {
-    text-align: center;
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-/* text */
 .skill-card h3 {
-    color: #00ffb4;
+    color: var(--accent);
     margin-bottom: 10px;
-    font-weight: 600;
+    font-size: 16px;
 }
 
 .skill-card p {
     line-height: 1.6;
     opacity: 0.9;
-}
-
-
-.card {
-    border: 1px solid var(--border-color);
-    padding: 20px;
-    background: rgba(255,255,255,0.02);
-    transition: 0.3s;
-}
-
-.card:hover {
-    border-color: var(--system-blue);
-    transform: translateY(-5px);
+    font-size: 14px;
 }
 
 
 
-/* ===== LeetCode Hover Popup ===== */
-/* ===== LeetCode Row Layout ===== */
+/* ======================================================
+   TITLE + ICON LAYOUT
+====================================================== */
 
-.leetcode-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* icon button */
-.leetcode-icon {
-    position: relative;
-    width: 18px;
-    height: 18px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* logo image */
-.leetcode-icon img {
-    width: 18px;
-    height: 18px;
-    filter: invert(1) brightness(1.4); /* neon look */
-    transition: 0.25s ease;
-}
-
-/* hover glow */
-.leetcode-icon:hover img {
-    transform: scale(1.2);
-    filter: invert(1) brightness(2) drop-shadow(0 0 6px #00ffb4);
-}
-
-/* ===== popup card ===== */
-
-.leetcode-popup {
-    position: absolute;
-    top: -95px;
-    left: -60px;
-
-    width: 150px;
-    padding: 10px;
-
-    background: #0b0f12;
-    border: 1px solid #00ffb4;
-    border-radius: 6px;
-
-    font-size: 12px;
-    line-height: 1.4;
-    text-align: center;
-
-    opacity: 0;
-    transform: translateY(8px);
-    pointer-events: none;
-
-    transition: 0.25s ease;
-    z-index: 100;
-}
-
-/* show on hover */
-.leetcode-icon:hover .leetcode-popup {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* =========================
-   Shared title layout
-========================= */
 .skill-title {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
-/* =========================
-   ICON BASE
-========================= */
+
+
+/* ======================================================
+   ICON BASE (GitHub + LeetCode)
+====================================================== */
+
 .github-icon,
 .leetcode-icon {
     position: relative;
-    display: inline-flex;
+
     width: 20px;
     height: 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     cursor: pointer;
 }
 
@@ -420,59 +373,94 @@ nav a {
 .leetcode-icon img {
     width: 20px;
     height: 20px;
+
     filter: invert(1);
+
     transition: transform 0.25s ease, filter 0.25s ease;
 }
 
-/* desktop hover glow */
-.github-icon:hover img,
-.leetcode-icon:hover img {
-    transform: scale(1.2);
-    filter: invert(1) drop-shadow(0 0 6px #00ffb4);
+
+
+/* glow only for devices that support hover */
+@media (hover: hover) {
+
+    .github-icon:hover img,
+    .leetcode-icon:hover img {
+        transform: scale(1.2);
+        filter: invert(1) drop-shadow(0 0 6px var(--accent));
+    }
 }
 
-/* =========================
-   POPUP (desktop only)
-========================= */
+
+
+/* ======================================================
+   POPUP CARDS (DESKTOP ONLY)
+====================================================== */
+
 .github-popup,
 .leetcode-popup {
     position: absolute;
-    top: -90px;
-    left: -60px;
+
+    top: -95px;
+    left: 50%;
+    transform: translate(-50%, 8px);
 
     width: 170px;
     padding: 10px;
 
     background: #0b0f12;
-    border: 1px solid #00ffb4;
+    border: 1px solid var(--accent);
     border-radius: 6px;
 
     font-size: 12px;
     text-align: center;
 
     opacity: 0;
-    transform: translateY(8px);
     pointer-events: none;
 
     transition: 0.25s ease;
+
     z-index: 100;
 }
 
-/* show on hover (desktop) */
-.github-icon:hover .github-popup,
-.leetcode-icon:hover .leetcode-popup {
-    opacity: 1;
-    transform: translateY(0);
+/* show only on hover-capable devices */
+@media (hover: hover) {
+
+    .github-icon:hover .github-popup,
+    .leetcode-icon:hover .leetcode-popup {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
 }
 
-
-/* =========================
-   MOBILE FIX
-   disable popup completely
-========================= */
+/* completely disable on touch devices */
 @media (hover: none) {
     .github-popup,
     .leetcode-popup {
         display: none !important;
     }
+}
+
+
+
+/* ======================================================
+   SMALL UTILITIES
+====================================================== */
+
+.leetcode-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card {
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 20px;
+    background: rgba(255,255,255,0.02);
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
 }
