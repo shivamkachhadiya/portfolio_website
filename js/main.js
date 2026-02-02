@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     const observerOptions = {
         threshold: 0.15 // Triggers when 15% of the element is visible
@@ -21,6 +22,69 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(el);
     });
 });
+
+/* ======================================================
+   HERO SCROLL PARALLAX ANIMATION
+   Text → right
+   Image → left
+   Blur + fade
+   ====================================================== */
+
+/* ======================================================
+   HERO SCROLL PARALLAX (Desktop + Mobile Optimized)
+   ====================================================== */
+
+const hero = document.getElementById("hero");
+const heroText = document.getElementById("heroText");
+const heroImage = document.getElementById("heroImage");
+
+if (hero && heroText && heroImage) {
+
+    let ticking = false;
+
+    function updateHero() {
+
+        const rect = hero.getBoundingClientRect();
+
+        // scroll progress (0 → 1)
+        const progress = Math.min(Math.max(-rect.top / window.innerHeight, 0), 1);
+
+        // detect mobile
+        const isMobile = window.innerWidth < 768;
+
+        // lighter animation for mobile
+        const move = progress * (isMobile ? 90 : 260);
+        const blur = progress * (isMobile ? 0 : 8); // disable blur on mobile
+        const fade = 1 - progress;
+
+        /* GPU accelerated transform */
+        heroText.style.transform = `translate3d(${move}px,0,0)`;
+        heroImage.style.transform = `translate3d(-${move}px,0,0)`;
+
+        heroText.style.opacity = fade;
+        heroImage.style.opacity = fade;
+
+        heroText.style.filter = `blur(${blur}px)`;
+        heroImage.style.filter = `blur(${blur}px)`;
+
+        ticking = false;
+    }
+
+    /* requestAnimationFrame = smoother + faster */
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(updateHero);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", updateHero);
+
+    // run once on load
+    updateHero();
+}
+
 // 1. Matrix Animation
 const canvas = document.getElementById('matrix-canvas');
 const ctx = canvas.getContext('2d');
