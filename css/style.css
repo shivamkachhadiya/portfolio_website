@@ -1,3 +1,13 @@
+/* smooth scroll + navbar offset */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
 /* Animation Initial States */
 .reveal {
     opacity: 0;
@@ -760,6 +770,91 @@ height: 100%; /* Force card to fill the grid cell */
     .cta-group {
         flex-direction: column;
         gap: 14px;
+        align-items: center;
+    }
+}
+
+
+
+/* ======================================================
+   FOOTER (Cyber Terminal Style)
+   ====================================================== */
+
+.footer {
+    border-top: 1px solid rgba(0,255,180,0.25);
+    background: rgba(0, 10, 8, 0.7);
+    backdrop-filter: blur(6px);
+    padding: 60px 8% 25px;
+    margin-top: 120px;
+}
+
+/* layout */
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* terminal text */
+.footer-terminal {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: #00ffb4;
+}
+
+.terminal-line {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.terminal-line.highlight {
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* links */
+.footer-links,
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer a {
+    color: #9cebd6;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.25s ease;
+}
+
+.footer a:hover {
+    color: #00ffb4;
+    text-shadow: 0 0 6px #00ffb4;
+}
+
+/* bottom */
+.footer-bottom {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.6;
+    border-top: 1px solid rgba(0,255,180,0.15);
+    padding-top: 15px;
+}
+
+/* ======================================================
+   MOBILE
+   ====================================================== */
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-links,
+    .footer-social {
         align-items: center;
     }
 }

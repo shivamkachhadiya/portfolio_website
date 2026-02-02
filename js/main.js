@@ -219,3 +219,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+
+/* ======================================================
+   FOOTER ANIMATION + YEAR AUTO UPDATE
+   ====================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* auto year */
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* terminal type animation */
+    const lines = document.querySelectorAll(".terminal-line");
+
+    lines.forEach((line, index) => {
+        setTimeout(() => {
+            line.style.transition = "all 0.6s ease";
+            line.style.opacity = 1;
+            line.style.transform = "translateY(0)";
+        }, index * 400);
+    });
+
+});
