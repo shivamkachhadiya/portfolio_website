@@ -466,3 +466,141 @@ height: 100%; /* Force card to fill the grid cell */
     border-color: var(--accent);
     transform: translateY(-5px);
 }
+
+
+/* //=====================ABOUT ME=================================================== */
+/* --- Global Section Management --- */
+#about, #education {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px; /* Reduced from 80px to pull sections closer */
+    width: 100%;
+}
+
+.section-title {
+    margin-bottom: 25px; /* Tighter gap between title and content */
+}
+
+/* --- About Grid --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px; /* Reduced gap */
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+    .about-grid {
+        grid-template-columns: 1.5fr 1fr;
+    }
+}
+
+/* --- Shared Terminal Box Style --- */
+.education-box {
+    width: 100%;
+    background: rgba(0, 255, 170, 0.02);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 20px; /* Tighter internal padding */
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
+}
+
+.education-box.verbose {
+    max-width: 900px; /* Centered verbose box */
+}
+
+/* --- Commands & Text --- */
+.command {
+    color: var(--accent);
+    font-family: 'Fira Code', monospace;
+    font-weight: bold;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.command::before {
+    content: "➜ ";
+    opacity: 0.6;
+}
+
+.bio-block {
+    margin-bottom: 15px;
+}
+
+.bio-block p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --- List Management --- */
+.edu-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.edu-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    position: relative;
+}
+
+/* For the simple list in About Me */
+.mini .edu-list li {
+    padding-left: 15px;
+}
+.mini .edu-list li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+/* --- Verbose Section Details --- */
+.timestamp {
+    color: var(--accent);
+    opacity: 0.5;
+    font-family: monospace;
+    font-size: 11px;
+    min-width: 95px;
+}
+
+.edu-text {
+    flex-grow: 1;
+}
+
+.status-tag {
+    font-size: 10px;
+    padding: 2px 6px;
+    border: 1px solid rgba(0, 255, 180, 0.3);
+    border-radius: 4px;
+    color: var(--accent);
+    margin-left: 10px;
+}
+
+.system-footer {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(0, 255, 180, 0.1);
+    font-family: monospace;
+    font-size: 11px;
+    display: flex;
+}
+
+.system-footer .label { opacity: 0.4; margin-right: 5px; }
+.system-footer .val { margin-right: 20px; }
+
+@keyframes blink {
+    50% { opacity: 0.5; }
+}
+.pulse { animation: blink 2s infinite; }
