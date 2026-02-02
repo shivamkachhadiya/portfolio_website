@@ -1,4 +1,66 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const observerOptions = {
+        threshold: 0.15 // Triggers when 15% of the element is visible
+    };
+
+    const revealCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                // Optional: stop observing once revealed
+                // observer.unobserve(entry.target); 
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(revealCallback, observerOptions);
+
+    // Target all your main sections and boxes
+    document.querySelectorAll('.education-box, .bio-block, .section-title, .stack-card').forEach(el => {
+        el.classList.add("reveal");
+        observer.observe(el);
+    });
+});
+// 1. Matrix Animation
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>[]{}/-_=+";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = Array(Math.floor(columns)).fill(1);
+
+function drawMatrix() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; // Creates the trail effect
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#00ffb4"; // Your accent color
+    ctx.font = fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
+        drops[i]++;
+    }
+}
+setInterval(drawMatrix, 50);
+
+// 2. Preloader Removal
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        preloader.style.opacity = '0';
+        setTimeout(() => preloader.style.display = 'none', 500);
+    }, 2000); // 2-second boot sequence
+});
+document.addEventListener("DOMContentLoaded", () => {
 
     const dot = document.querySelector(".cursor-dot");
     const ring = document.querySelector(".cursor-ring");

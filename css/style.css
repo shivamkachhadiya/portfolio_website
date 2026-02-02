@@ -1,3 +1,85 @@
+/* Animation Initial States */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+}
+
+/* State when active (scrolled into view) */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delay for the grid cards */
+.about-grid .reveal:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.system-stack-grid .reveal:nth-child(2) { transition-delay: 0.1s; }
+.system-stack-grid .reveal:nth-child(3) { transition-delay: 0.2s; }
+/* Matrix Canvas Background */
+#matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Sits behind content */
+    opacity: 0.15; /* Keep it subtle so text is readable */
+}
+
+/* Preloader Styles */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Fira Code', monospace;
+}
+
+.loader-terminal {
+    color: #00ffb4;
+    width: 300px;
+}
+
+.load-cmd {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #00ffb4;
+    animation: typing 1s steps(30, end), blink-caret 0.5s step-end infinite;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 2px;
+    background: rgba(0, 255, 180, 0.1);
+    margin-top: 15px;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #00ffb4;
+    animation: fillProgress 2s forwards;
+}
+
+@keyframes fillProgress {
+    to { width: 100%; }
+}
+
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #00ffb4 } }
 /* ===== SYSTEM VARIABLES & RESET ===== */
 :root {
     --bg-color: #050505;
