@@ -245,17 +245,76 @@ nav a {
 }
 
 /* ===== SECTIONS (Skills/Projects) ===== */
-.section {
-    padding: clamp(60px, 10vw, 100px) clamp(20px, 5%, 80px);
+/* ===== SKILLS SECTION ===== */
+
+.skills-section {
+    margin-top: 120px;
 }
 
-.skills {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 15px;
-    list-style: none;
-    padding: 0;
+.section-title {
+    color: #00ffb4;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
 }
+
+/* rows */
+.skills-row {
+    display: grid;
+    gap: 30px;
+    margin-bottom: 35px;
+}
+
+/* layouts */
+.skills-row.primary {
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+}
+
+.skills-row:not(.primary):not(.tools) {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.skills-row.tools {
+    grid-template-columns: 1fr;
+}
+
+/* cards */
+.skill-card {
+    background: rgba(0, 255, 170, 0.04);
+    border: 1px solid rgba(0, 255, 170, 0.25);
+    padding: 28px;
+    border-radius: 10px;
+    transition: 0.25s ease;
+    backdrop-filter: blur(6px);
+}
+
+.skill-card:hover {
+    transform: translateY(-6px);
+    border-color: #00ffb4;
+}
+
+/* emphasis */
+.skill-card.wide {
+    font-size: 15px;
+}
+
+.skill-card.small {
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* text */
+.skill-card h3 {
+    color: #00ffb4;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.skill-card p {
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
 
 .card {
     border: 1px solid var(--border-color);
@@ -267,4 +326,130 @@ nav a {
 .card:hover {
     border-color: var(--system-blue);
     transform: translateY(-5px);
+}
+
+
+
+/* ===== LeetCode Hover Popup ===== */
+/* ===== LeetCode Row Layout ===== */
+
+.leetcode-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* icon button */
+.leetcode-icon {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* logo image */
+.leetcode-icon img {
+    width: 18px;
+    height: 18px;
+    filter: invert(1) brightness(1.4); /* neon look */
+    transition: 0.25s ease;
+}
+
+/* hover glow */
+.leetcode-icon:hover img {
+    transform: scale(1.2);
+    filter: invert(1) brightness(2) drop-shadow(0 0 6px #00ffb4);
+}
+
+/* ===== popup card ===== */
+
+.leetcode-popup {
+    position: absolute;
+    top: -95px;
+    left: -60px;
+
+    width: 150px;
+    padding: 10px;
+
+    background: #0b0f12;
+    border: 1px solid #00ffb4;
+    border-radius: 6px;
+
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+
+    transition: 0.25s ease;
+    z-index: 100;
+}
+
+/* show on hover */
+.leetcode-icon:hover .leetcode-popup {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* title row */
+.skill-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* icon */
+.leetcode-icon {
+    position: relative;
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+}
+
+/* svg */
+.leetcode-icon img {
+    width: 20px;
+    height: 20px;
+    filter: invert(1) brightness(1.4);
+    transition: 0.25s ease;
+}
+
+/* glow on hover */
+.leetcode-icon:hover img {
+    transform: scale(1.25);
+    filter: invert(1) brightness(2) drop-shadow(0 0 6px #00ffb4);
+}
+
+/* popup */
+.leetcode-popup {
+    position: absolute;
+    top: -90px;
+    left: -55px;
+
+    width: 150px;
+    padding: 10px;
+
+    background: #0b0f12;
+    border: 1px solid #00ffb4;
+    border-radius: 6px;
+
+    font-size: 12px;
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+
+    transition: 0.25s ease;
+}
+
+/* show popup */
+.leetcode-icon:hover .leetcode-popup {
+    opacity: 1;
+    transform: translateY(0);
 }
