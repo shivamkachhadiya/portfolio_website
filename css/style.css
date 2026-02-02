@@ -24,10 +24,12 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Sits behind content */
-    opacity: 0.15; /* Keep it subtle so text is readable */
+    width: 100vw;   /* Force viewport width */
+    height: 100vh;  /* Force viewport height */
+    z-index: -1;
+    opacity: 0.15;
+    pointer-events: none; /* Allows user to click "through" the animation */
+    display: block;
 }
 
 /* Preloader Styles */
