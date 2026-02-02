@@ -62,7 +62,8 @@ nav a {
 
 /* ===== HERO SECTION (System Design Theme) ===== */
 .hero {
-    min-height: 100vh;
+        min-height: 100svh; /* better mobile support */
+
     display: flex;
     flex-direction: column; /* Mobile First */
     align-items: center;
@@ -147,20 +148,32 @@ nav a {
 
 /* ===== PROFILE IMAGE & BLUEPRINT FRAME ===== */
 .image-container {
-    position: relative;
-    padding: 20px;
-    width: fit-content;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
 }
 
+
 .profile-img {
-    width: clamp(260px, 40vw, 380px);
+    width: 100%;
+    max-width: 380px;
     height: auto;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-    filter: grayscale(100%) contrast(110%);
+
+    /* IMPORTANT */
+    object-fit: contain;   /* NEVER cut */
+    aspect-ratio: auto;
+
     border: 1px solid var(--system-blue);
     display: block;
+
+    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
 }
+
 
 .frame-corner {
     position: absolute;
