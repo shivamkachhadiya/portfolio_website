@@ -1,27 +1,13 @@
-/* =====================================================
-   FOOTER SCRIPT
-   - Visitor Counter
-   - Live time with ms
-   - World clocks
-   - Year auto update
-===================================================== */
-
-/* ---------- Visitor Counter (localStorage based) ---------- */
+/* Visitor Counter */
 let visits = localStorage.getItem("visits");
-
-if (!visits) visits = 0;
-
-visits++;
+visits = visits ? parseInt(visits) + 1 : 1;
 localStorage.setItem("visits", visits);
-
 document.getElementById("visitorCount").textContent = visits;
 
-
-/* ---------- Year ---------- */
+/* Year */
 document.getElementById("year").textContent = new Date().getFullYear();
 
-
-/* ---------- Time Formatter ---------- */
+/* Time formatter */
 function format(zone) {
     return new Date().toLocaleTimeString("en-US", {
         timeZone: zone,
@@ -32,16 +18,10 @@ function format(zone) {
     });
 }
 
-
-/* ---------- Live Clock ---------- */
+/* Live clocks */
 function updateClocks() {
-
     const now = new Date();
-
-    // local with milliseconds
-    document.getElementById("liveTime").textContent =
-        now.toLocaleTimeString() + "." + now.getMilliseconds();
-
+    document.getElementById("liveTime").textContent = now.toLocaleTimeString() + "." + now.getMilliseconds();
     document.getElementById("utc").textContent = format("UTC");
     document.getElementById("india").textContent = format("Asia/Kolkata");
     document.getElementById("ny").textContent = format("America/New_York");
@@ -50,6 +30,14 @@ function updateClocks() {
     document.getElementById("sydney").textContent = format("Australia/Sydney");
     document.getElementById("brazil").textContent = format("America/Sao_Paulo");
 }
-
 setInterval(updateClocks, 100);
 updateClocks();
+
+/* Smooth scroll for footer nav */
+document.querySelectorAll('.footer-link').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+    });
+});
