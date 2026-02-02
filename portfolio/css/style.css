@@ -1,0 +1,134 @@
+/* ===== GLOBAL ===== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  background: #050505;
+  color: white;
+  cursor: none;
+}
+
+/* ===== GRID BACKGROUND ===== */
+
+.tech-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background-image:
+    linear-gradient(rgba(0, 255, 170, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 170, 0.03) 1px, transparent 1px);
+
+  background-size: 40px 40px;
+}
+
+/* ===== NAV ===== */
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  background: #050505;
+  border-bottom: 1px solid #222;
+}
+
+nav a {
+  margin-left: 20px;
+  color: #00ffaa;
+  text-decoration: none;
+}
+
+/* ===== HERO ===== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 120px 80px;
+}
+
+.hero-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 70px;
+  font-weight: 900;
+}
+
+.neon {
+  color: #00ffaa;
+}
+
+/* ===== PROFILE IMAGE ===== */
+
+.profile-img {
+  width: 380px;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: 0.4s ease;
+
+  box-shadow:
+    0 0 0 1px rgba(0,255,170,0.2),
+    0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* ===== SECTIONS ===== */
+
+.section {
+  padding: 100px 80px;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  list-style: none;
+}
+
+.card {
+  border: 1px solid #222;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* ===== BUTTON ===== */
+
+.btn {
+  border: 1px solid #00ffaa;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 20px;
+  color: #00ffaa;
+}
+
+/* ===== CURSOR ===== */
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: #00ffaa;
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor-ring {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #00ffaa;
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.15s ease;
+}
