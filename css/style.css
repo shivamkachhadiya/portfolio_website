@@ -732,20 +732,23 @@ height: 100%; /* Force card to fill the grid cell */
     overflow: hidden;
 }
 /* ======================================================
-   MOBILE BREAKPOINT
+   MOBILE BREAKPOINT — OPTIMIZED FOR SPEED
    ====================================================== */
 
 @media (max-width: 768px) {
 
+    /* ================= LAYOUT ================= */
+
     .hero {
-        flex-direction: column;   /* stack vertically */
+        flex-direction: column;
         text-align: center;
-        padding-top: 120px;
-        gap: 40px;
+        padding-top: 110px;
+        gap: 32px;
     }
 
     .hero-content {
         order: 1;
+        width: 100%;
     }
 
     .image-container {
@@ -755,29 +758,67 @@ height: 100%; /* Force card to fill the grid cell */
 
     .profile-img {
         width: 85%;
-        max-width: 320px;
+        max-width: 280px;
     }
 
-    /* smaller fonts for mobile */
+    /* ================= TYPOGRAPHY ================= */
+
     .hero-name {
-        font-size: 34px;
+        font-size: 28px;
     }
 
     .hero-role {
-        font-size: 22px;
+        font-size: 18px;
     }
 
     .hero-summary {
         font-size: 14px;
+        line-height: 1.6;
+        padding: 0 14px;
     }
 
-    /* buttons stacked nicely */
+    /* ================= BUTTONS ================= */
+
     .cta-group {
         flex-direction: column;
-        gap: 14px;
+        gap: 12px;
         align-items: center;
+        width: 100%;
     }
+
+    .btn {
+        width: 90%;
+        max-width: 280px;
+    }
+
+    /* ================= PERFORMANCE BOOSTS ================= */
+
+    /* Disable heavy visual effects */
+    * {
+        text-shadow: none !important;
+        box-shadow: none !important;
+        filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    /* Faster animations only */
+    * {
+        transition: transform 0.25s ease, opacity 0.25s ease !important;
+    }
+
+    /* Disable expensive canvas background if using one */
+    #matrix-canvas {
+        display: none !important;
+    }
+
+    /* smoother scrolling */
+    html {
+        scroll-behavior: auto;
+    }
+
 }
+
 
 
 
