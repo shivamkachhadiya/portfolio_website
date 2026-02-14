@@ -3,7 +3,10 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>S. Kachhadiya | Low Latency C++ Engineer</title>
 
     <!-- CSS -->
@@ -73,13 +76,15 @@
             </h2>
 
             <p class="hero-summary">
-                Building high-performance systems in Modern C++.<br>
-                Specialized in OS internals, concurrency, networking & low-latency design.<br>
-                Targeting HFT / FinTech infrastructure roles.
+                C++ systems and low‑latency developer specializing in lock‑free concurrency, high‑frequency
+                order matching engines, and POSIX‑based Linux system programming. Experienced in designing
+                high‑throughput messaging frameworks and order‑book‑style matching systems with emphasis
+                on microsecond‑level latency and predictable performance.
+
             </p>
 
             <div class="cta-group">
-                <a href="#projects" class="btn-system">View Projects</a>
+                <a href="#skills" class="btn-system">View Projects</a>
                 <a href="assets/resume.pdf" class="btn-outline" download>Download Resume</a>
                 <a href="https://github.com/shivamkachhadiya" class="btn-system">GitHub</a>
             </div>
@@ -88,7 +93,9 @@
 
         <!-- RIGHT IMAGE -->
         <div class="image-container" id="heroImage">
-            <img src="assets/images/profile.jpeg" class="profile-img">
+            <img src="assets/images/profile.jpeg" class="profile-img" width="420" height="560" loading="lazy"
+                decoding="async" alt="Shivam Kachhadiya" />
+
         </div>
 
     </section>
@@ -96,34 +103,51 @@
 
     <!-- ABOUT -->
     <section id="about" class="about-section">
-        <h2 class="section-title">ABOUT_ME ></h2>
-        <div class="about-grid">
-            <div class="terminal-bio">
-                <div class="bio-block">
-                    <span class="command">whoami</span>
-                    <p>
-                        Systems-focused <strong>C++ Engineer</strong> specializing in low-latency design.
-                        Currently optimizing the bridge between hardware-level logic and practical
-                        trading applications.
-                    </p>
-                </div>
 
-                <div class="bio-block">
-                    <span class="command">ls experience/</span>
-                    <p>Linux File Explorer, HFT Match Book, 300+ DSA.</p>
-                </div>
+        <h2 class="section-title">ABOUT_ME ></h2>
+
+        <div class="about-grid-3">
+
+            <!-- WHOAMI -->
+            <div class="bio-card">
+                <span class="command">whoami</span>
+                <p>
+                    Systems-focused <strong>C++ Engineer</strong> building low-latency,
+                    high-performance software. Specialized in Linux internals,
+                    concurrency, lock-free systems, and exchange-style trading engines.
+                </p>
             </div>
 
-            <div class="education-box mini">
-                <span class="command">cat education.log</span>
-                <ul class="edu-list">
-                    <li><strong>M.Tech CSE</strong> - VIT Vellore, Tamil Nadu (Present)</li>
-                    <li><strong>MCA</strong> - SRM University, Chennai, Tamil Nadu (2025 Batch)</li>
-                    <li><strong>BCA</strong> - Atmiya University, Rajkot, Gujarat (2023 Batch)</li>
+
+            <!-- SKILLS -->
+            <div class="bio-card">
+                <span class="command">skills --list</span>
+                <ul class="terminal-list">
+                    <li>Languages: C++17/20, C, Python, Java, C#.NET</li>
+                    <li>Linux • POSIX • fork/exec • IPC • Memory Mgmt</li>
+                    <li>Mutex • Condition Vars • std::atomic • Lock-Free</li>
+                    <li>TCP/IP • Sockets • High-Throughput Messaging</li>
+                    <li>Git • CMake • Wireshark • STL</li>
                 </ul>
             </div>
+
+
+            <!-- ACHIEVEMENTS -->
+            <div class="bio-card">
+                <span class="command">achievements --top</span>
+                <ul class="terminal-list">
+                    <li>400+ DSA problems solved</li>
+                    <li>AIR 370 — VITMEE 2025</li>
+                    <li>Active GitHub contributor (C++ Systems/Concurrency)</li>
+                </ul>
+            </div>
+
         </div>
+
     </section>
+
+
+
 
     <section id="education" class="section">
         <h2 class="section-title">Education ></h2>
@@ -155,6 +179,96 @@
     </section>
     <!-- SKILLS -->
     <section id="skills" class="section skills-section">
+        <!-- ROW 3 (PROJECTS) -->
+        <h2 class="section-title">// PROJECTS</h2>
+
+        <div class="projects-grid">
+
+            <!-- Project 1 -->
+            <div class="skill-card">
+                <h3 class="skill-title">
+                    High-Frequency Order Matching Engine
+
+                    <a href="https://github.com/shivamkachhadiya/Stock_Order_Matching_Engine_Cpp.git" target="_blank"
+                        class="github-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+                            alt="GitHub" />
+
+                        <div class="github-popup">
+                            <strong>GitHub Repo</strong><br>
+                            Matching Engine Source<br>
+                            Click to open →
+                        </div>
+                    </a>
+                </h3>
+
+                <p>
+                    C++17 • Multithreading • Concurrency • Low-Latency Systems<br>
+                    Price–time FIFO order book • O(1) insert/cancel/execute<br>
+                    Producer–consumer pipeline • Mutex/locks/cond vars<br>
+                    100K–1M+ stress tested • Microsecond latency
+                </p>
+            </div>
+
+
+            <!-- Project 2 -->
+            <div class="skill-card">
+                <h3 class="skill-title">
+                    Lock-Free Messaging Framework
+
+                    <a href="https://github.com/shivamkachhadiya/Lock_Free_Messaging_FrameWork_In_Cpp.git"
+                        target="_blank" class="github-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+                            alt="GitHub" />
+
+                        <div class="github-popup">
+                            <strong>GitHub Repo</strong><br>
+                            Lock-Free Queue Code<br>
+                            Click to open →
+                        </div>
+                    </a>
+                </h3>
+
+                <p>
+                    C++20 • Atomics • Systems Programming • Concurrency<br>
+                    Lock-free SPSC ring buffer • std::atomic ordering<br>
+                    10–20M+ msg/sec • Sub-µs latency<br>
+                    alignas(64) cache-aware design • zero-copy buffers
+                </p>
+            </div>
+
+
+            <!-- Project 3 -->
+            <div class="skill-card">
+                <h3 class="skill-title">
+                    Linux Command Line Shell
+
+                    <a href="https://github.com/shivamkachhadiya/Low-latency-Linux_CML.git" target="_blank"
+                        class="github-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
+                            alt="GitHub" />
+
+                        <div class="github-popup">
+                            <strong>GitHub Repo</strong><br>
+                            Shell Implementation<br>
+                            Click to open →
+                        </div>
+                    </a>
+                </h3>
+
+                <p>
+                    C++17 • POSIX • Linux System Programming<br>
+                    fork/exec/wait lifecycle • pipes & redirection<br>
+                    Built-in commands • job control<br>
+                    Modular CMake architecture
+                </p>
+            </div>
+
+        </div>
+
+
+
+        <br>
 
         <h2 class="section-title">// SYSTEM_STACK</h2>
 
@@ -223,13 +337,15 @@
             </div>
 
             <div class="skill-card small">
+                <h3 class="skill-title">
+                    Tools</h3>
                 Git • GitHub • CMake • g++ • Linux CLI • HTML/CSS/JS
             </div>
         </div>
 
 
         <!-- ROW 2 (SYSTEMS) -->
-        <div class="skills-grid">
+        <div class="projects-grid">
             <div class="skill-card">
 
                 <h3 class="skill-title">
@@ -274,10 +390,7 @@
         </div>
 
 
-        <!-- ROW 3 (TOOLS) -->
-        <div class="skills-grid tools">
 
-        </div>
 
     </section>
 
