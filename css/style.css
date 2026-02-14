@@ -1154,3 +1154,29 @@ html, body {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* ===============================update======================================= */
+
+/* Mobile Optimized Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px); /* Vertical slide is more natural for mobile */
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform, opacity;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* For Desktop: Keeping the slight side-tilt */
+@media (min-width: 768px) {
+    .reveal {
+        transform: translate(30px, 20px);
+    }
+    .reveal.active {
+        transform: translate(0, 0);
+    }
+}
