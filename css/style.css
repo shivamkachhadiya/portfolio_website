@@ -544,13 +544,7 @@ height: 100%; /* Force card to fill the grid cell */
     }
 }
 
-/* completely disable on touch devices */
-@media (hover: none) {
-    .github-popup,
-    .leetcode-popup {
-        display: none !important;
-    }
-}
+
 
 
 
@@ -1230,4 +1224,65 @@ html, body {
     .reveal.active {
         transform: translate(0, 0);
     }
+}
+
+
+/* ================= BLOG GLOW BUTTON ================= */
+
+.blog-link {
+    position: relative;
+    padding: 8px 18px;
+    border-radius: 10px;
+
+    font-weight: 600;
+    text-decoration: none;
+
+    color: #00ffa2;
+    border: 2px solid #00ffa2;
+
+    transition: 0.3s ease;
+    overflow: hidden;
+}
+
+/* hover fill */
+.blog-link:hover {
+    background: #00ffa2;
+    color: #000;
+}
+
+
+/* 🔥 Neon Glow Animation */
+.blog-link::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+
+    background: linear-gradient(
+        45deg,
+        #00ffa2,
+        #00ffcc,
+        #00ffa2,
+        #00ffcc
+    );
+
+    border-radius: 12px;
+    z-index: -1;
+
+    filter: blur(10px);
+    opacity: 0.8;
+
+    animation: glowMove 3s linear infinite;
+}
+
+/* moving light */
+@keyframes glowMove {
+    0%   { filter: blur(8px) brightness(1); }
+    50%  { filter: blur(16px) brightness(1.4); }
+    100% { filter: blur(8px) brightness(1); }
+}
+
+
+/* click press effect */
+.blog-link:active {
+    transform: scale(0.95);
 }
