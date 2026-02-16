@@ -29,7 +29,6 @@
         </nav>
     </header>
 
-
     <!-- ================= ARTICLE ================= -->
     <article class="post-container">
 
@@ -42,7 +41,6 @@
             <time datetime="2026-02-16">Last Updated: Feb 16, 2026</time>
         </p>
 
-
         <!-- ================= INTRO ================= -->
         <p class="lead">
             Designing <b>ultra-low latency systems</b> means eliminating locks, syscalls, and unpredictable pauses.
@@ -50,7 +48,6 @@
             This article explains how to build a <b>Lock-Free Single Producer Single Consumer (SPSC) Ring Buffer</b>
             using <b>C++ atomics and memory ordering</b>.
         </p>
-
 
         <!-- ================= PROBLEM ================= -->
         <h2>🚀 Problem Statement</h2>
@@ -69,7 +66,6 @@
         <p>
             Solution → <b>Lock-free ring buffer</b>
         </p>
-
 
         <!-- ================= ARCHITECTURE ================= -->
         <h2>🧠 Architecture</h2>
@@ -91,7 +87,6 @@ Producer  --->  [ Ring Buffer ]  --->  Consumer
             This is called the <b>Single Writer Principle</b> → zero write contention → naturally lock-free.
         </p>
 
-
         <!-- ================= DATA STRUCTURE ================= -->
         <h2>📦 Data Structure</h2>
 
@@ -105,9 +100,33 @@ struct RingBuffer {
 };
 </code></pre>
 
+        <p>
+            Explain each:
+        </p>
+
+        <ul>
+            <li><b>buffer</b> → Stores elements</li>
+            <li><b>head</b> → Index to read</li>
+            <li><b>tail</b> → Index to write</li>
+        </ul>
 
         <!-- ================= PRODUCER ================= -->
         <h2>⚙️ Producer (push)</h2>
+
+        <p>
+            Producer steps:
+        </p>
+
+        <ul>
+            <li>Load head (acquire)</li>
+            <li>Check if buffer full</li>
+            <li>Write element</li>
+            <li>Update tail (release)</li>
+        </ul>
+
+        <p>
+            Why? Before updating tail → data must be fully written. Release ensures consumer sees correct memory.
+        </p>
 
         <pre><code class="code">
 bool push(const T& item) {
@@ -115,7 +134,7 @@ bool push(const T& item) {
     size_t next = (t + 1) % N;
 
     if (next == head.load(std::memory_order_acquire))
-        return false;
+        return false; // full
 
     buffer[t] = item;
 
@@ -124,16 +143,26 @@ bool push(const T& item) {
 }
 </code></pre>
 
-
         <!-- ================= CONSUMER ================= -->
         <h2>⚙️ Consumer (pop)</h2>
+
+        <p>
+            Consumer steps:
+        </p>
+
+        <ul>
+            <li>Load tail (acquire)</li>
+            <li>If empty → return</li>
+            <li>Read data</li>
+            <li>Update head (release)</li>
+        </ul>
 
         <pre><code class="code">
 bool pop(T& item) {
     size_t h = head.load(std::memory_order_relaxed);
 
     if (h == tail.load(std::memory_order_acquire))
-        return false;
+        return false; // empty
 
     item = buffer[h];
 
@@ -142,35 +171,93 @@ bool pop(T& item) {
 }
 </code></pre>
 
-
         <!-- ================= MEMORY ORDERING ================= -->
         <h2>🧩 Why Acquire–Release?</h2>
 
         <p>
-            <b>Release</b> → guarantees writes become visible
-            <b>Acquire</b> → guarantees latest data is seen
+            <b>Release</b> → Ensures all writes before store become visible<br>
+            <b>Acquire</b> → Ensures all reads after load see latest data
         </p>
 
         <p class="highlight">
-            Creates happens-before relationship between producer and consumer.
+            Creates <b>happens-before</b> relationship between producer and consumer.
         </p>
-
 
         <!-- ================= PERFORMANCE ================= -->
-        <h2>🔥 Why is this so fast?</h2>
-
-        <ul>
-            <li>No locks</li>
-            <li>No syscalls</li>
-            <li>Cache friendly contiguous memory</li>
-            <li>No heap allocation</li>
-            <li>No false sharing</li>
-        </ul>
+        <h2>🔥 Why No Mutex?</h2>
 
         <p>
-            Achieves <b>10–20M+ messages/sec</b> with sub-microsecond latency.
+            Mutex → kernel involvement, context switch, 1000ns+, unpredictable<br>
+            Atomics → CPU instruction only, few nanoseconds<br>
+            Lock-free gives deterministic latency, high throughput → ideal for HFT
         </p>
 
+        <h2>🔥 Why Fast?</h2>
+
+        <ul>
+            <li>No locks → no syscalls</li>
+            <li>Contiguous memory → cache friendly</li>
+            <li>No heap → preallocated</li>
+            <li>No false sharing → alignas(64)</li>
+        </ul>
+
+        <!-- ================= COMMON FOLLOW-UPS ================= -->
+        <h2>🧠 Common Follow-ups</h2>
+
+        <ul>
+            <li>Q: Why only SPSC? <br> A: MPMC needs CAS → slower + ABA issues</li>
+            <li>Q: Why modulo slow? <br> A: Use power-of-two + bitmask → index & (N-1)</li>
+            <li>Q: What if producer faster? <br> A: Buffer full → drop or spin</li>
+            <li>Q: What about false sharing? <br> A: Pad head and tail</li>
+        </ul>
+
+        <!-- ================= PERFECT INTERVIEW ANSWER ================= -->
+        <h2>📝 Perfect Interview Answer</h2>
+
+        <p>
+            I implemented a lock-free SPSC ring buffer to achieve ultra-low latency inter-thread communication.
+            Since only one thread writes head and one writes tail, there’s no write contention.
+            I used std::atomic with acquire-release ordering to guarantee visibility without locks.
+            The buffer is preallocated and cache-aligned to avoid heap allocation and false sharing.
+            This eliminates syscalls and context switching, allowing us to achieve 10–20M messages/sec with
+            sub-microsecond latency.
+        </p>
+
+        <!-- ================= SCENARIO EXAMPLE ================= -->
+        <h2>🔥 Problem Setup (Example)</h2>
+
+        <p>Assume:</p>
+        <ul>
+            <li>Buffer size = 4</li>
+            <li>Indexes: 0 1 2 3</li>
+        </ul>
+
+        <p>Initial state:</p>
+        <pre class="diagram">
+buffer: [ _  _  _  _ ]
+head = 0
+tail = 0
+</pre>
+
+        <p>Meaning: head == tail → EMPTY</p>
+
+        <h3>🎯 Scenario Simulation</h3>
+
+        <ol>
+            <li>Producer pushes A → tail moves to 1 → buffer: [ A _ _ _ ]</li>
+            <li>Producer pushes B → tail = 2 → buffer: [ A B _ _ ]</li>
+            <li>Producer pushes C → tail = 3 → buffer: [ A B C _ ]</li>
+            <li>Consumer pops first item → head = 1 → reads A → buffer stays [ A B C _ ]</li>
+            <li>Consumer pops second item → head = 2 → reads B → buffer: [ A B C _ ]</li>
+            <li>Producer pushes D → tail wraps to 0 → buffer: [ A B C D ]</li>
+            <li>Producer pushes E → tail = 1 → buffer: [ E B C D ]</li>
+            <li>Consumer pops all → head = 1 → reads C,D,E → final state head=tail=1 → EMPTY</li>
+        </ol>
+
+        <p class="highlight">
+            Works without locks because producer only modifies tail and consumer only modifies head. Only reads other's
+            pointer → safe.
+        </p>
 
         <!-- ================= TAGS ================= -->
         <div class="tags">
@@ -182,7 +269,6 @@ bool pop(T& item) {
         </div>
 
     </article>
-
 
     <footer>
         © 2026 ShivamSys • Systems + DSA Engineering Blog
