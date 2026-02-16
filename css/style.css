@@ -1290,11 +1290,11 @@ html, body {
             brightness(0)
             saturate(100%)
             invert(76%)
-            sepia(85%)
-            saturate(600%)
+        sepia(60%)          /* less green */
+        saturate(180%)      /* reduced */
             hue-rotate(80deg)
-            drop-shadow(0 0 8px #00ff88)
-            drop-shadow(0 0 14px #00ff88);
+                    drop-shadow(0 0 4px #00ff88); /* soft glow only */
+
     }
 
     .github-icon:active,
