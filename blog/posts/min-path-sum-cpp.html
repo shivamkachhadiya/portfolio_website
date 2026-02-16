@@ -60,7 +60,8 @@ Output: 12
         <!-- ================= NOTES ================= -->
         <h2>📝 Handwritten Notes</h2>
 
-        <img src="../images/notes/min-path-sum.jpg" alt="Minimum Path Sum handwritten notes by Shivam" loading="lazy">
+        <img src="../images/notes/min-path-sum.jpeg" alt="Minimum Path Sum handwritten notes by Shivam" class="note-img"
+            onclick="openImage(this)" loading="lazy" />
 
 
         <!-- ================= INTUITION ================= -->
@@ -152,6 +153,12 @@ public:
     <footer>
         © 2026 Shivam Kachhadiya • ShivamSys.in
     </footer>
+    <!-- Image Popup Modal -->
+    <div id="imgModal" class="img-modal" onclick="closeImage()">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+    <script src="../js/main.js" defer></script>
 
 </body>
 
