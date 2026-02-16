@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- ===== SEO ===== -->
+    <title>Breadth First Search BFS Traversal in C++ | Graph Algorithm Explained | ShivamSys</title>
+
+    <meta name="description"
+        content="Learn Breadth First Search (BFS) graph traversal using queue with intuition, dry run, handwritten notes and optimized C++ code for interviews and coding rounds." />
+
+    <meta name="keywords"
+        content="BFS traversal C++, breadth first search graph, graph traversal algorithm, queue BFS, DSA interview preparation, graph problems C++" />
+
+    <meta name="author" content="Shivam Kachhadiya" />
+    <link rel="canonical" href="https://shivamsys.in/blog/posts/bfs-graph-traversal-cpp.html" />
+
+    <link rel="stylesheet" href="../css/blog.css" />
+</head>
+
+<body>
+
+    <header class="navbar">
+        <h2><a href="/">ShivamSys</a></h2>
+        <nav>
+            <a href="/blog/">← Back to Blog</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <article class="post-container">
+
+            <h1>Breadth First Search (BFS) Traversal – Graph | C++</h1>
+
+            <p>
+                <strong>BFS (Breadth First Search)</strong> is one of the most important graph traversal algorithms.
+                It explores nodes level by level using a <b>queue (FIFO)</b>.
+                Very common in interviews at companies like
+                :contentReference[oaicite:0]{index=0},
+                :contentReference[oaicite:1]{index=1},
+                :contentReference[oaicite:2]{index=2}.
+            </p>
+
+            <!-- ================= PROBLEM ================= -->
+
+            <h2>Problem Statement</h2>
+
+            <p>
+                Given an undirected connected graph represented using adjacency list,
+                return BFS traversal starting from vertex 0.
+                Traverse neighbors in the same order as given.
+            </p>
+
+
+            <!-- ================= INTUITION ================= -->
+
+            <h2>Intuition</h2>
+
+            <ul>
+                <li>Use Queue (FIFO)</li>
+                <li>Visit node → push neighbors</li>
+                <li>Mark visited to avoid cycles</li>
+                <li>Process level by level</li>
+            </ul>
+
+
+            <!-- ================= HANDWRITTEN ================= -->
+            <h2>Handwritten Notes</h2>
+
+            <div class="notes-grid">
+
+                <img src="../images/notes/q.png" class="note-img" onclick="openImage(this)" loading="lazy"
+                    alt="BFS diagram source geeksforgeeks" />
+                <p class="img-source">Source: geeksforgeeks.org</p>
+
+
+                <img src="../images/notes/bfs1.jpeg" class="note-img" onclick="openImage(this)" loading="lazy"
+                    alt="BFS handwritten notes 1" />
+
+                <img src="../images/notes/bfs2.jpeg" class="note-img" onclick="openImage(this)" loading="lazy"
+                    alt="BFS handwritten notes 2" />
+
+            </div>
+
+
+
+
+            <!-- ================= DRY RUN ================= -->
+
+            <h2>Dry Run Example</h2>
+
+            <pre><code>
+adj = [[2,3,1], [0], [0,4], [0], [2]]
+
+Start → 0
+Queue → 2,3,1
+Then → 4
+
+Output → 0 2 3 1 4
+</code></pre>
+
+
+            <!-- ================= APPROACH ================= -->
+
+            <h2>Approach</h2>
+
+            <ol>
+                <li>Push start node (0) into queue</li>
+                <li>Mark visited</li>
+                <li>While queue not empty → pop and explore neighbors</li>
+                <li>Add unvisited neighbors</li>
+            </ol>
+
+            <p><strong>Time:</strong> O(V + E)</p>
+            <p><strong>Space:</strong> O(V)</p>
+
+
+            <!-- ================= CODE ================= -->
+
+            <h2>C++ Code</h2>
+
+            <pre><code>
+class Solution {
+public:
+
+    void bfsHelper(vector<vector<int>>& adj,
+                   unordered_map<int,bool>& vis,
+                   vector<int>& ans,
+                   int node) {
+
+        queue<int> q;
+
+        q.push(node);
+        vis[node] = true;
+
+        while(!q.empty()) {
+
+            int frontnode = q.front();
+            q.pop();
+
+            ans.push_back(frontnode);
+
+            for(auto i : adj[frontnode]) {
+                if(!vis[i]) {
+                    q.push(i);
+                    vis[i] = true;
+                }
+            }
+        }
+    }
+
+    vector<int> bfs(vector<vector<int>>& adj) {
+
+        int vertex = adj.size();
+
+        unordered_map<int,bool> vis;
+        vector<int> ans;
+
+        for(int i = 0; i < vertex; i++) {
+            if(!vis[i]) {
+                bfsHelper(adj, vis, ans, i);
+            }
+        }
+
+        return ans;
+    }
+};
+</code></pre>
+
+
+            <!-- ================= TAGS ================= -->
+
+            <p style="margin-top:40px;">
+                <span class="tag">Graph</span>
+                <span class="tag">BFS</span>
+                <span class="tag">Queue</span>
+                <span class="tag">C++</span>
+            </p>
+
+        </article>
+
+    </main>
+
+
+    <footer>
+        © 2026 Shivam Kachhadiya • ShivamSys.in
+    </footer>
+
+
+    <!-- Modal (reuse existing JS) -->
+    <div id="imgModal" class="img-modal" onclick="closeImage()">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <script src="../js/main.js" defer></script>
+
+</body>
+
+</html>
