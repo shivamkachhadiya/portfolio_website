@@ -6,11 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- SEO -->
-    <title>Minimum Path Sum LeetCode 64 – C++ Memoization DP Solution | ShivamSys</title>
-    <meta name="description"
-        content="LeetCode 64 Minimum Path Sum explained with intuition, memoization dynamic programming, handwritten notes and optimized C++ solution." />
+    <title>LeetCode 64 Minimum Path Sum – C++ Memoization DP Solution | ShivamSys</title>
 
+    <meta name="description"
+        content="LeetCode 64 Minimum Path Sum explained with intuition, recursion, memoization dynamic programming, handwritten notes and optimized C++ code." />
+
+    <meta name="keywords"
+        content="LeetCode 64, Minimum Path Sum, C++ DP solution, memoization, dynamic programming tutorial, grid DP problems" />
+
+    <meta name="author" content="Shivam Kachhadiya" />
+
+    <link rel="canonical" href="https://shivamsys.in/blog/posts/min-path-sum-cpp.html" />
+
+    <link rel="preload" href="../css/blog.css" as="style">
     <link rel="stylesheet" href="../css/blog.css" />
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="LeetCode 64 – Minimum Path Sum C++ Solution" />
+    <meta property="og:description" content="Complete DP explanation with handwritten notes and optimized C++ code." />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="../images/notes/min-path-sum.jpeg" />
+
+    <!-- ⭐ BIG SEO BOOST: Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "LeetCode 64 Minimum Path Sum – C++ DP Solution",
+      "author": {
+        "@type": "Person",
+        "name": "Shivam Kachhadiya"
+      },
+      "image": "../images/notes/min-path-sum.jpeg",
+      "publisher": {
+        "@type": "Organization",
+        "name": "ShivamSys"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://shivamsys.in/blog/posts/min-path-sum-cpp.html"
+      }
+    }
+    </script>
 </head>
 
 <body>
@@ -18,99 +55,52 @@
     <header class="navbar">
         <h2><a href="/">ShivamSys</a></h2>
         <nav>
-            <!-- Works locally + hosting -->
             <a href="/blog/">← Back to Blog</a>
         </nav>
     </header>
 
+    <main>
 
-    <article class="post-container">
+        <article class="post-container">
 
-        <h1>LeetCode 64 — Minimum Path Sum (C++ DP + Memoization)</h1>
+            <h1>LeetCode 64 — Minimum Path Sum (C++ DP + Memoization)</h1>
 
-        <p>
-            This problem is a classic <b>Dynamic Programming grid problem</b>.
-            We must travel from top-left → bottom-right while minimizing total cost.
-        </p>
+            <p>
+                Classic <strong>Dynamic Programming grid problem</strong>.
+                We must move from top-left to bottom-right minimizing total cost.
+            </p>
 
+            <h2>Problem Statement</h2>
+            <p>
+                Given an m × n grid filled with non-negative numbers, find a path which minimizes the sum.
+                Moves allowed → Right or Down only.
+            </p>
 
-        <!-- ================= PROBLEM ================= -->
-        <h2>🧩 Problem Statement</h2>
+            <h2>Handwritten Notes</h2>
 
-        <p>
-            Given an <b>m × n grid</b> filled with non-negative numbers, find a path which minimizes
-            the sum of all numbers along its path.
-        </p>
+            <img src="../images/notes/min-path-sum.jpeg" alt="Minimum Path Sum dynamic programming handwritten notes"
+                class="note-img" onclick="openImage(this)" loading="lazy" />
 
-        <p><b>Allowed moves:</b> Right or Down only</p>
+            <h2>Intuition</h2>
 
+            <ul>
+                <li>Each cell comes from top or left</li>
+                <li>Choose minimum</li>
+                <li>Store results using memoization</li>
+            </ul>
 
-        <!-- ================= EXAMPLES ================= -->
-        <h2>📌 Examples</h2>
+            <h2>C++ Code (Memoization)</h2>
 
-        <pre><code>
-Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
-Output: 7
-
-Input: grid = [[1,2,3],[4,5,6]]
-Output: 12
-</code></pre>
-
-
-        <!-- ================= NOTES ================= -->
-        <h2>📝 Handwritten Notes</h2>
-
-        <img src="../images/notes/min-path-sum.jpeg" alt="Minimum Path Sum handwritten notes by Shivam" class="note-img"
-            onclick="openImage(this)" loading="lazy" />
-
-
-        <!-- ================= INTUITION ================= -->
-        <h2>💡 Intuition</h2>
-
-        <ul>
-            <li>From every cell, you can come from <b>top</b> or <b>left</b></li>
-            <li>Choose the minimum cost of both</li>
-            <li>Use memoization to avoid recomputation</li>
-        </ul>
-
-        <p>
-            State:
-        </p>
-
-        <pre><code>
-dp[i][j] = grid[i][j] + min(top, left)
-</code></pre>
-
-
-        <!-- ================= APPROACH ================= -->
-        <h2>⚙️ Approach (Memoization)</h2>
-
-        <ol>
-            <li>Use recursion from bottom-right → top-left</li>
-            <li>Base case at (0,0)</li>
-            <li>Store results in dp[][]</li>
-            <li>Time Complexity: O(m × n)</li>
-            <li>Space Complexity: O(m × n)</li>
-        </ol>
-
-
-        <!-- ================= CODE ================= -->
-        <h2>💻 C++ Code</h2>
-
-        <pre><code>
+            <pre><code>
 class Solution {
 public:
     int solve(vector<vector<int>>& grid, int i, int j,
               vector<vector<int>>& dp) {
 
-        if (i < 0 || j < 0)
-            return 1e9;
+        if (i < 0 || j < 0) return 1e9;
+        if (i == 0 && j == 0) return grid[0][0];
 
-        if (i == 0 && j == 0)
-            return grid[0][0];
-
-        if (dp[i][j] != -1)
-            return dp[i][j];
+        if (dp[i][j] != -1) return dp[i][j];
 
         int top  = grid[i][j] + solve(grid, i-1, j, dp);
         int left = grid[i][j] + solve(grid, i, j-1, dp);
@@ -119,45 +109,27 @@ public:
     }
 
     int minPathSum(vector<vector<int>>& grid) {
-        int m = grid.size();
-        int n = grid[0].size();
-
+        int m = grid.size(), n = grid[0].size();
         vector<vector<int>> dp(m, vector<int>(n, -1));
-
         return solve(grid, m-1, n-1, dp);
     }
 };
 </code></pre>
 
+        </article>
 
-        <!-- ================= COMPLEXITY ================= -->
-        <h2>📊 Complexity</h2>
-
-        <ul>
-            <li>Time → O(m × n)</li>
-            <li>Space → O(m × n)</li>
-        </ul>
-
-
-        <!-- ================= TAGS ================= -->
-        <p style="margin-top:40px;">
-            <span class="tag">DP</span>
-            <span class="tag">Memoization</span>
-            <span class="tag">C++</span>
-            <span class="tag">LeetCode</span>
-        </p>
-
-    </article>
-
+    </main>
 
     <footer>
         © 2026 Shivam Kachhadiya • ShivamSys.in
     </footer>
-    <!-- Image Popup Modal -->
+
+    <!-- Modal -->
     <div id="imgModal" class="img-modal" onclick="closeImage()">
         <span class="close-btn">&times;</span>
         <img class="modal-content" id="modalImg">
     </div>
+
     <script src="../js/main.js" defer></script>
 
 </body>
