@@ -341,3 +341,54 @@ pre {
         font-size: 26px;
     }
 }
+
+
+/* ==============================
+   CLEAN PRO CURSOR (Dot + Ring)
+============================== */
+
+.cursor-dot,
+.cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+
+/* small center dot */
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00ffb4;
+    box-shadow: 0 0 8px #00ffb4;
+}
+
+/* smooth following circle */
+.cursor-ring {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #00ffb4;
+    opacity: 0.6;
+    transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+}
+
+/* grow on hover clickable items */
+a:hover ~ .cursor-ring,
+button:hover ~ .cursor-ring {
+    width: 42px;
+    height: 42px;
+    opacity: 1;
+}
+
+
+/* disable on mobile */
+@media (hover: none) and (pointer: coarse) {
+    .cursor-dot,
+    .cursor-ring {
+        display: none;
+    }
+}
