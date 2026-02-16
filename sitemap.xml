@@ -2,8 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://shivamsys.in/</loc>
-    <priority>1.0</priority>
+    <loc>https://shivamsys.in/blog/</loc>
+  </url>
+
+  <url>
+    <loc>https://shivamsys.in/blog/posts/min-path-sum-cpp.html</loc>
   </url>
 
 </urlset>
