@@ -544,7 +544,13 @@ height: 100%; /* Force card to fill the grid cell */
     }
 }
 
-
+/* completely disable on touch devices */
+@media (hover: none) {
+    .github-popup,
+    .leetcode-popup {
+        display: none !important;
+    }
+}
 
 
 
@@ -730,28 +736,24 @@ height: 100%; /* Force card to fill the grid cell */
 .hero {
     overflow: hidden;
 }
+
+
 /* ======================================================
-   MOBILE BREAKPOINT — OPTIMIZED FOR SPEED
-   ====================================================== */
+   MOBILE — LAYOUT ONLY (no visual changes)
+====================================================== */
 
 @media (max-width: 768px) {
 
-    /* ================= LAYOUT ================= */
-
+    /* layout stack only */
     .hero {
         flex-direction: column;
         text-align: center;
-        padding-top: 110px;
-        gap: 32px;
+        padding-top: 100px;
+        gap: 28px;
     }
 
-    .hero-content {
-        order: 1;
-        width: 100%;
-    }
-
+    .hero-content,
     .image-container {
-        order: 2;
         width: 100%;
     }
 
@@ -760,8 +762,7 @@ height: 100%; /* Force card to fill the grid cell */
         max-width: 280px;
     }
 
-    /* ================= TYPOGRAPHY ================= */
-
+    /* typography smaller only */
     .hero-name {
         font-size: 28px;
     }
@@ -776,13 +777,11 @@ height: 100%; /* Force card to fill the grid cell */
         padding: 0 14px;
     }
 
-    /* ================= BUTTONS ================= */
-
+    /* buttons stack */
     .cta-group {
         flex-direction: column;
         gap: 12px;
         align-items: center;
-        width: 100%;
     }
 
     .btn {
@@ -790,34 +789,11 @@ height: 100%; /* Force card to fill the grid cell */
         max-width: 280px;
     }
 
-    /* ================= PERFORMANCE BOOSTS ================= */
-
-    /* Disable heavy visual effects */
-    * {
-        text-shadow: none !important;
-        box-shadow: none !important;
-        filter: none !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-    }
-
-    /* Faster animations only */
-    * {
-        transition: transform 0.25s ease, opacity 0.25s ease !important;
-    }
-
-    /* Disable expensive canvas background if using one */
+    /* optional: disable only heavy canvas */
     #matrix-canvas {
-        display: none !important;
+        display: none;
     }
-
-    /* smoother scrolling */
-    html {
-        scroll-behavior: auto;
-    }
-
 }
-
 
 
 
@@ -1228,61 +1204,70 @@ html, body {
 
 
 /* ================= BLOG GLOW BUTTON ================= */
+/* ================= BLOG GLOW BUTTON ================= */
 
 .blog-link {
     position: relative;
-    padding: 8px 18px;
-    border-radius: 10px;
 
+    padding: 6px 16px;   /* smaller */
+    font-size: 14px;
+
+    border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
 
     color: #00ffa2;
     border: 2px solid #00ffa2;
 
-    transition: 0.3s ease;
+    transition: all 0.25s ease;
     overflow: hidden;
 }
 
-/* hover fill */
+/* hover */
 .blog-link:hover {
     background: #00ffa2;
     color: #000;
 }
 
-
-/* 🔥 Neon Glow Animation */
+/* glow layer */
 .blog-link::before {
     content: "";
     position: absolute;
-    inset: -3px;
+    inset: -2px;
 
-    background: linear-gradient(
-        45deg,
-        #00ffa2,
-        #00ffcc,
-        #00ffa2,
-        #00ffcc
-    );
+    background: linear-gradient(45deg,#00ffa2,#00ffcc,#00ffa2);
+    border-radius: 10px;
 
-    border-radius: 12px;
+    filter: blur(8px);
+    opacity: 0.7;
+
     z-index: -1;
 
-    filter: blur(10px);
-    opacity: 0.8;
-
-    animation: glowMove 3s linear infinite;
+    animation: glowMove 3s ease-in-out infinite;
 }
 
-/* moving light */
 @keyframes glowMove {
-    0%   { filter: blur(8px) brightness(1); }
-    50%  { filter: blur(16px) brightness(1.4); }
-    100% { filter: blur(8px) brightness(1); }
+    0%,100% { filter: blur(6px) brightness(1); }
+    50% { filter: blur(12px) brightness(1.4); }
 }
 
-
-/* click press effect */
 .blog-link:active {
     transform: scale(0.95);
+}
+
+
+/* ================= MOBILE FIX ================= */
+
+@media (max-width: 768px) {
+
+    .blog-link {
+        padding: 4px 10px;     /* 🔥 compact */
+        font-size: 12px;
+        border-radius: 6px;
+    }
+
+    .blog-link::before {
+        filter: blur(5px);     /* reduce glow spread */
+        inset: -1px;
+    }
 }
