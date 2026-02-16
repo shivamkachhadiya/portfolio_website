@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- ===== SEO ===== -->
+    <title>Lock-Free SPSC Ring Buffer in C++ | Atomics, Memory Ordering, Low Latency Systems</title>
+
+    <meta name="description"
+        content="Deep dive into Lock-Free Single Producer Single Consumer ring buffer using C++ atomics. Learn acquire-release memory ordering, ultra low latency design, and HFT level concurrency optimization." />
+
+    <meta name="keywords"
+        content="Lock Free Ring Buffer, SPSC Queue, C++ atomics, memory ordering, acquire release, lock free concurrency, high frequency trading systems, low latency C++" />
+
+    <meta name="author" content="Shivam Kachhadiya" />
+
+    <link rel="stylesheet" href="../css/blog.css" />
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+        <h2><a href="/">ShivamSys</a></h2>
+        <nav>
+            <a href="/blog/">← Back to Blog</a>
+        </nav>
+    </header>
+
+
+    <!-- ================= ARTICLE ================= -->
+    <article class="post-container">
+
+        <h1 class="post-title">
+            Lock-Free SPSC Ring Buffer in C++
+        </h1>
+
+        <p class="post-meta">
+            Written by <strong>Shivam Kachhadiya</strong> •
+            <time datetime="2026-02-16">Last Updated: Feb 16, 2026</time>
+        </p>
+
+
+        <!-- ================= INTRO ================= -->
+        <p class="lead">
+            Designing <b>ultra-low latency systems</b> means eliminating locks, syscalls, and unpredictable pauses.
+            In high-frequency trading or real-time engines, even <b>microseconds matter</b>.
+            This article explains how to build a <b>Lock-Free Single Producer Single Consumer (SPSC) Ring Buffer</b>
+            using <b>C++ atomics and memory ordering</b>.
+        </p>
+
+
+        <!-- ================= PROBLEM ================= -->
+        <h2>🚀 Problem Statement</h2>
+
+        <p>
+            We need fast communication between two threads without mutex overhead.
+            Mutex causes:
+        </p>
+
+        <ul>
+            <li>context switching</li>
+            <li>kernel involvement</li>
+            <li>latency spikes</li>
+        </ul>
+
+        <p>
+            Solution → <b>Lock-free ring buffer</b>
+        </p>
+
+
+        <!-- ================= ARCHITECTURE ================= -->
+        <h2>🧠 Architecture</h2>
+
+        <pre class="diagram">
+Producer  --->  [ Ring Buffer ]  --->  Consumer
+</pre>
+
+        <p>
+            Only:
+        </p>
+
+        <ul>
+            <li>Producer writes <b>tail</b></li>
+            <li>Consumer writes <b>head</b></li>
+        </ul>
+
+        <p class="highlight">
+            This is called the <b>Single Writer Principle</b> → zero write contention → naturally lock-free.
+        </p>
+
+
+        <!-- ================= DATA STRUCTURE ================= -->
+        <h2>📦 Data Structure</h2>
+
+        <pre><code class="code">
+template&lt;typename T, size_t N&gt;
+struct RingBuffer {
+    T buffer[N];
+
+    std::atomic&lt;size_t&gt; head;
+    std::atomic&lt;size_t&gt; tail;
+};
+</code></pre>
+
+
+        <!-- ================= PRODUCER ================= -->
+        <h2>⚙️ Producer (push)</h2>
+
+        <pre><code class="code">
+bool push(const T& item) {
+    size_t t = tail.load(std::memory_order_relaxed);
+    size_t next = (t + 1) % N;
+
+    if (next == head.load(std::memory_order_acquire))
+        return false;
+
+    buffer[t] = item;
+
+    tail.store(next, std::memory_order_release);
+    return true;
+}
+</code></pre>
+
+
+        <!-- ================= CONSUMER ================= -->
+        <h2>⚙️ Consumer (pop)</h2>
+
+        <pre><code class="code">
+bool pop(T& item) {
+    size_t h = head.load(std::memory_order_relaxed);
+
+    if (h == tail.load(std::memory_order_acquire))
+        return false;
+
+    item = buffer[h];
+
+    head.store((h + 1) % N, std::memory_order_release);
+    return true;
+}
+</code></pre>
+
+
+        <!-- ================= MEMORY ORDERING ================= -->
+        <h2>🧩 Why Acquire–Release?</h2>
+
+        <p>
+            <b>Release</b> → guarantees writes become visible
+            <b>Acquire</b> → guarantees latest data is seen
+        </p>
+
+        <p class="highlight">
+            Creates happens-before relationship between producer and consumer.
+        </p>
+
+
+        <!-- ================= PERFORMANCE ================= -->
+        <h2>🔥 Why is this so fast?</h2>
+
+        <ul>
+            <li>No locks</li>
+            <li>No syscalls</li>
+            <li>Cache friendly contiguous memory</li>
+            <li>No heap allocation</li>
+            <li>No false sharing</li>
+        </ul>
+
+        <p>
+            Achieves <b>10–20M+ messages/sec</b> with sub-microsecond latency.
+        </p>
+
+
+        <!-- ================= TAGS ================= -->
+        <div class="tags">
+            <span class="tag">Lock-Free</span>
+            <span class="tag">C++</span>
+            <span class="tag">Atomics</span>
+            <span class="tag">Concurrency</span>
+            <span class="tag">Low Latency</span>
+        </div>
+
+    </article>
+
+
+    <footer>
+        © 2026 ShivamSys • Systems + DSA Engineering Blog
+    </footer>
+
+    <script src="../js/main.js" defer></script>
+</body>
+
+</html>
