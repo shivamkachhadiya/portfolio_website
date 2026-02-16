@@ -1,0 +1,114 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #0b0f14;
+    color: #e6e6e6;
+    line-height: 1.6;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10%;
+    background: #11161d;
+}
+
+.navbar a {
+    color: #00ffa2;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.navbar a:hover {
+    opacity: 0.7;
+}
+
+/* ===== HERO ===== */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    color: #00ffa2;
+}
+
+/* ===== POSTS GRID ===== */
+.posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 40px 10%;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: #121821;
+    padding: 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background: #18202b;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #00ffa2;
+}
+
+.tag {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 12px;
+    background: #00ffa2;
+    color: black;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+/* ===== POST PAGE ===== */
+.post-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+.post-container h1 {
+    color: #00ffa2;
+    margin-bottom: 20px;
+}
+
+.post-container img {
+    max-width: 100%;
+    margin: 25px 0;
+}
+
+pre {
+    background: #121821;
+    padding: 15px;
+    overflow-x: auto;
+    border-radius: 8px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #11161d;
+    margin-top: 60px;
+    font-size: 14px;
+}
