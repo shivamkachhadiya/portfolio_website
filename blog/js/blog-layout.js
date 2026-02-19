@@ -31,3 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.insertAdjacentHTML('beforeend', siteFooter);
     }
 });
+
+
+
+function openPdfViewer() {
+    document.getElementById("pdfModal").classList.add("active");
+}
+
+function closePdfViewer() {
+    document.getElementById("pdfModal").classList.remove("active");
+}

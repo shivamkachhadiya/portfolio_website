@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- ===== PRIMARY SEO ===== -->
+    <title>Low-Latency Linux Command Line in C++ | POSIX System Calls | Shivam Kachhadiya</title>
+
+    <meta name="description"
+        content="Build a high-performance Linux command line file explorer and mini shell in C++ using POSIX system calls like fork, exec, read, write, open, dup2 and more." />
+
+    <meta name="keywords"
+        content="Linux shell C++, POSIX system calls, fork exec dup2, file descriptor, low latency systems, linux commands implementation, system programming, Shivam Kachhadiya blog" />
+
+    <meta name="author" content="Shivam Kachhadiya" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="canonical" href="https://shivamsys.in/blog/posts/linux-command-line.html" />
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Low Latency Linux Command Line in C++" />
+    <meta property="og:description" content="Build your own Linux shell using raw POSIX system calls" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://shivamsys.in/blog/posts/linux-command-line.html" />
+
+    <script src="../js/main.js" defer></script>
+    <script src="../js/blog-layout.js" defer></script>
+    <script src="../js/cursor.js" defer></script>
+
+    <link rel="stylesheet" href="../css/blog.css" />
+    <link rel="preload" href="../css/blog.css" as="style">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Low-Latency Linux Command Line in C++",
+      "author": {
+        "@type": "Person",
+        "name": "Shivam Kachhadiya"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ShivamSys"
+      },
+      "keywords": ["Linux", "POSIX", "System Calls", "C++", "Shell"]
+    }
+    </script>
+
+</head>
+
+
+<body>
+
+    <header class="navbar">
+        <h2><a href="/">ShivamSys</a></h2>
+        <nav>
+            <a href="/blog/">← Back to Blog</a>
+        </nav>
+    </header>
+
+
+    <main>
+        <article class="post-container">
+
+            <h1>Low-Latency Linux Command Line (CML) – Built with POSIX & C++</h1>
+
+            <p class="post-meta">
+                Written by <strong>Shivam Kachhadiya</strong> •
+                <time datetime="2026-02-19">Last Updated: Feb 19, 2026</time>
+            </p>
+
+
+            <!-- ================= OVERVIEW ================= -->
+
+            <h2>Overview</h2>
+
+            <p>
+                This project is a <strong>high-performance Linux command-line file explorer + mini shell</strong>
+                implemented in modern C++ using <b>raw POSIX system calls</b>.
+                The goal is deterministic, low-latency and memory-efficient execution without heavy abstractions.
+            </p>
+
+            <ul>
+                <li>Clean modular architecture</li>
+                <li>Direct kernel interaction</li>
+                <li>Minimal heap allocation</li>
+                <li>Predictable latency</li>
+                <li>Real systems programming practice</li>
+            </ul>
+
+
+            <!-- ================= PDF VIEWER ================= -->
+
+            <!-- ================= PDF PREVIEW ================= -->
+
+            <h2>📄 Full Notes (PDF)</h2>
+
+            <div class="pdf-section">
+
+                <iframe src="../images/notes/Linux_CML.pdf#toolbar=1&navpanes=1&scrollbar=1" class="pdf-preview">
+                </iframe>
+
+                <div class="pdf-actions">
+                    <a href="../images/notes/Linux_CML.pdf" download class="pdf-download-btn">
+                        ⬇ Download PDF
+                    </a>
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= TOOLS ================= -->
+
+            <h2>Environment & Tools</h2>
+
+            <ul>
+                <li>WSL Ubuntu 22.04</li>
+                <li>g++ Compiler</li>
+                <li>CMake Build System</li>
+                <li>Git</li>
+                <li>VS Code Remote WSL</li>
+                <li>perf / valgrind profiling</li>
+            </ul>
+
+
+            <!-- ================= MEMORY ================= -->
+
+            <h2>Memory Model Used</h2>
+
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Speed</th>
+                    <th>Allocation</th>
+                </tr>
+                <tr>
+                    <td>Stack</td>
+                    <td>Very Fast</td>
+                    <td>Automatic</td>
+                </tr>
+                <tr>
+                    <td>Heap</td>
+                    <td>Slower</td>
+                    <td>Manual</td>
+                </tr>
+            </table>
+
+            <pre><code>
+char buffer[4096]; // stack buffer → fastest
+</code></pre>
+
+            <p>
+                Stack buffers avoid malloc/new overhead → ideal for low latency tools.
+            </p>
+
+
+            <!-- ================= SYSTEM CALLS ================= -->
+
+            <h2>Core System Calls Used</h2>
+
+            <ul>
+                <li>getcwd()</li>
+                <li>chdir()</li>
+                <li>opendir() / readdir()</li>
+                <li>stat()</li>
+                <li>open() / read() / write()</li>
+                <li>fork()</li>
+                <li>execvp()</li>
+                <li>dup2()</li>
+            </ul>
+
+
+
+            <!-- ================= PWD ================= -->
+
+            <h2>pwd Command – getcwd()</h2>
+
+            <pre><code>
+char buffer[PATH_MAX];
+getcwd(buffer, sizeof(buffer));
+std::cout << buffer;
+</code></pre>
+
+            <p>
+                Kernel copies current working directory directly into user buffer.
+                Fast, deterministic, zero heap allocation.
+            </p>
+
+
+
+            <!-- ================= CD ================= -->
+
+            <h2>cd Command – chdir()</h2>
+
+            <pre><code>
+chdir(path.c_str());
+</code></pre>
+
+            <p>
+                Changes process working directory inside kernel.
+                Must use <code>c_str()</code> because POSIX expects C-style strings.
+            </p>
+
+
+
+            <!-- ================= LS ================= -->
+
+            <h2>ls Command – Directory Traversal</h2>
+
+            <pre><code>
+DIR* dir = opendir(".");
+while((entry = readdir(dir)) != nullptr) {
+    cout &lt;&lt; entry-&gt;d_name;
+}
+closedir(dir);
+</code></pre>
+
+            <p>
+                Directories are just special files containing entries (inode + name).
+            </p>
+
+
+
+            <!-- ================= CAT ================= -->
+
+            <h2>cat Command – open/read/write</h2>
+
+            <pre><code>
+int fd = open(path.c_str(), O_RDONLY);
+char buffer[4096];
+
+while((bytes = read(fd, buffer, 4096)) &gt; 0)
+    write(1, buffer, bytes);
+
+close(fd);
+</code></pre>
+
+            <p>
+                Uses raw syscalls → faster than std::cout/printf.
+                4KB buffer reduces syscall overhead.
+            </p>
+
+
+
+            <!-- ================= COPY ================= -->
+
+            <h2>cp Command – File Copy</h2>
+
+            <pre><code>
+while((bytes = read(src_fd, buffer, 4096)) &gt; 0)
+    write(dest_fd, buffer, bytes);
+</code></pre>
+
+            <p>
+                Classic read → write loop.
+                Kernel performs two copies: disk → kernel → user → kernel → disk.
+            </p>
+
+
+
+            <!-- ================= EXEC ================= -->
+
+            <h2>fork + exec Pattern (Shell Core)</h2>
+
+            <pre><code>
+pid_t pid = fork();
+
+if(pid == 0) {
+    execvp(argv[0], argv.data());
+}
+else {
+    waitpid(pid, nullptr, 0);
+}
+</code></pre>
+
+            <p>
+                Shell workflow:
+            </p>
+
+            <ul>
+                <li>fork → create child</li>
+                <li>exec → replace child with program</li>
+                <li>wait → parent synchronizes</li>
+            </ul>
+
+
+
+            <!-- ================= REDIRECTION ================= -->
+
+            <h2>Output Redirection – dup2()</h2>
+
+            <pre><code>
+int fd = open("out.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+dup2(fd, 1);   // redirect stdout
+execvp("ls", argv);
+</code></pre>
+
+            <p>
+                Anything written to FD 1 (stdout) now goes to file.
+                This is how <code>ls &gt; out.txt</code> works internally.
+            </p>
+
+
+
+            <!-- ================= FILE DESCRIPTORS ================= -->
+
+            <h2>File Descriptor Model</h2>
+
+            <pre><code>
+0 → stdin
+1 → stdout
+2 → stderr
+3+ → files/sockets/pipes
+</code></pre>
+
+            <p>
+                FD is just an integer index into kernel’s file descriptor table.
+            </p>
+
+
+
+            <!-- ================= DESIGN ================= -->
+
+            <h2>Design Principles Followed</h2>
+
+            <ul>
+                <li>Minimize syscalls</li>
+                <li>Use stack buffers</li>
+                <li>Avoid heap allocations</li>
+                <li>Prefer absolute paths</li>
+                <li>Cache metadata</li>
+                <li>Use modular command architecture</li>
+            </ul>
+
+
+
+            <!-- ================= TAGS ================= -->
+
+            <p style="margin-top:40px;">
+                <span class="tag">Linux</span>
+                <span class="tag">POSIX</span>
+                <span class="tag">System Calls</span>
+                <span class="tag">C++</span>
+                <span class="tag">Shell</span>
+                <span class="tag">Low Latency</span>
+            </p>
+
+        </article>
+    </main>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/blog-layout.js" defer></script>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+    <script src="../js/cursor.js" defer></script>
+</body>
+
+</html>
