@@ -17,7 +17,9 @@ body {
 .navbar {
     display: flex;
     justify-content: space-between;
-    padding: 20px 10%;
+padding: 18px 32px;
+max-width: 1200px;
+margin: 0 auto;
     background: #11161d;
 }
 
@@ -43,27 +45,57 @@ body {
 }
 
 /* ===== POSTS GRID ===== */
+/* ===== POSTS GRID (FIXED CLEAN LAYOUT) ===== */
 .posts {
+    max-width: 1200px;           /* center content */
+    margin: 0 auto;
+    padding: 60px 20px;
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    padding: 40px 10%;
+    grid-template-columns: repeat(3, 1fr); /* 🔥 3x3 desktop */
+    gap: 32px;
+}
+/* tablet */
+@media (max-width: 1000px) {
+    .posts {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
+/* mobile */
+@media (max-width: 600px) {
+    .posts {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ===== CARD ===== */
 /* ===== CARD ===== */
 .card {
     background: #121821;
-    padding: 25px;
-    border-radius: 10px;
+    padding: 28px;
+    border-radius: 14px;
+
+    display: flex;              /* 🔥 equal heights */
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 260px;
+
     text-decoration: none;
     color: white;
-    transition: 0.2s;
+
+    border: 1px solid #1f2733;
+    transition: all 0.25s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    background: #18202b;
+    transform: translateY(-6px);
+    border-color: #00ffa2;
+    box-shadow: 0 10px 25px rgba(0,255,162,0.15);
 }
+
 
 .card h3 {
     margin-bottom: 10px;
@@ -234,11 +266,21 @@ footer {
 }
 
 /* last updated text */
-.updated{
-    color:#9aa0a6;
-    font-weight:500;
-    letter-spacing:0.3px;
+.updated {
+    font-size: 12px;          /* fixed size */
+    font-weight: 600;
+
+    padding: 6px 10px;
+    border-radius: 8px;
+
+    background: #161b22;      /* subtle card bg */
+    color: #9aa0a6;
+
+    border: 1px solid #222a35;
+
+    white-space: nowrap;      /* prevent wrapping */
 }
+
 
 /* mobile */
 @media (max-width:768px){
@@ -326,13 +368,15 @@ pre {
 }
 
 .tag {
-    background: #00ff8822;
-    color: #00ff88;
-    padding: 6px 10px;
-    border-radius: 6px;
-    margin-right: 8px;
-    font-size: 13px;
+    display: inline-block;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: rgba(0,255,162,0.15);
+    color: #00ffa2;
+    margin: 4px 6px 0 0;
 }
+
 
 /* ========= MOBILE ========= */
 
