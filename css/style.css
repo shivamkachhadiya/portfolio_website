@@ -1,6 +1,5 @@
 /* ======================================================
-   SHIVAMSYS.IN — MASTER STYLESHEET v5.0
-   Same terminal/matrix theme — fully optimised
+   SHIVAMSYS.IN — MASTER STYLESHEET v5.1
    ====================================================== */
 
 /* 1. VARIABLES */
@@ -28,12 +27,11 @@ body { font-family: 'JetBrains Mono','Courier New',monospace; background: var(--
 img  { max-width: 100%; display: block; }
 section { scroll-margin-top: 78px; }
 a { color: inherit; }
-
 .neon     { color: var(--green); text-shadow: 0 0 14px rgba(0,255,157,.35); }
 .neon-alt { color: var(--blue);  text-shadow: 0 0 14px rgba(0,212,255,.35); }
 
 /* 3. KEYFRAMES */
-@keyframes blink       { 0%,100%{opacity:1} 50%{opacity:.3} }
+@keyframes blink       { 0%,100%{opacity:1}    50%{opacity:.3} }
 @keyframes blink-caret { from,to{border-color:transparent} 50%{border-color:var(--accent)} }
 @keyframes typing      { from{width:0} to{width:100%} }
 @keyframes fillBar     { to{width:100%} }
@@ -45,51 +43,74 @@ a { color: inherit; }
 .reveal.active { opacity:1; transform:translateY(0); }
 .pulse { animation: blink 2s infinite; }
 
-/* 4. MATRIX CANVAS */
+/* ======================================================
+   4. MATRIX CANVAS
+   z-index: 0 so it renders above body background (#050505)
+   pointer-events: none so it never blocks clicks
+   ====================================================== */
 #matrix-canvas {
     position: fixed;
     inset: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 0;          /* changed from -1 */
-    opacity: 0.18;       /* slightly higher than before */
+    z-index: 0;
+    opacity: 0.18;
     pointer-events: none;
     display: block;
 }
+@media (max-width: 768px) { #matrix-canvas { display: none; } }
 
 /* 5. PRELOADER */
 #preloader { position:fixed; inset:0; background:#000; z-index:9999; display:flex; justify-content:center; align-items:center; }
-.loader-terminal { color:var(--accent); width:min(300px, 85vw); }
+.loader-terminal { color:var(--accent); width:min(300px,85vw); }
 .load-cmd { display:block; font-size:12px; margin-bottom:6px; overflow:hidden; white-space:nowrap; border-right:2px solid var(--accent); animation:typing 1s steps(30,end), blink-caret .5s step-end infinite; }
 .progress-bar { width:100%; height:2px; background:rgba(0,255,180,.1); margin-top:14px; border-radius:2px; overflow:hidden; }
 .progress-fill { height:100%; background:var(--accent); width:0; animation:fillBar 1.5s ease forwards; box-shadow:0 0 8px var(--accent); }
 
-/* 6. TECH GRID */
+/* ======================================================
+   6. TECH GRID
+   z-index: 0 — same layer as canvas, behind all content
+   pointer-events: none — never blocks clicks
+   ====================================================== */
 .tech-grid {
     position: fixed;
     inset: 0;
-    z-index: 0;          /* changed from -1 */
+    z-index: 0;
+    pointer-events: none;
     background-image:
         linear-gradient(var(--grid) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid) 1px, transparent 1px);
     background-size: clamp(20px,5vw,40px) clamp(20px,5vw,40px);
-    pointer-events: none; /* ADD THIS — prevents grid blocking clicks */
 }
+
 /* 7. CURSOR */
-@media(hover:none) and (pointer:coarse){ body{cursor:auto} .cursor-dot,.cursor-ring{display:none} }
-@media(hover:hover) and (pointer:fine){ body{cursor:none} }
+@media(hover:none) and (pointer:coarse) { body{cursor:auto} .cursor-dot,.cursor-ring{display:none} }
+@media(hover:hover) and (pointer:fine)  { body{cursor:none} }
 .cursor-dot  { width:6px; height:6px; background:var(--green); position:fixed; top:0; left:0; border-radius:50%; pointer-events:none; z-index:9999; opacity:0; }
 .cursor-ring { width:28px; height:28px; border:1px solid var(--green); position:fixed; top:0; left:0; border-radius:50%; pointer-events:none; z-index:9998; opacity:0; transition:opacity .15s ease, width .15s ease, height .15s ease, border-color .15s ease; }
 
-/* 8. NAVIGATION */
-nav { position:fixed; top:0; width:100%;z-index: 1000;   padding:14px var(--px); display:flex; justify-content:space-between; align-items:center; background:rgba(5,5,5,.95); border-bottom:1px solid var(--border); z-index:1000; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
+/* ======================================================
+   8. NAVIGATION
+   z-index: 1000 keeps nav above canvas/grid (z-index: 0)
+   ====================================================== */
+nav {
+    position: fixed;
+    top: 0; width: 100%;
+    padding: 14px var(--px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(5,5,5,.95);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
 nav > span { color:var(--green); font-weight:700; letter-spacing:2px; font-size:.84rem; }
 .nav-links { display:flex; align-items:center; gap:2px; flex-wrap:wrap; }
 .nav-links a { padding:4px 8px; color:var(--green); text-decoration:none; font-size:.8rem; text-transform:uppercase; letter-spacing:1px; opacity:.7; transition:opacity .2s, background .2s; border-radius:4px; }
 .nav-links a:hover, .nav-links a.active { opacity:1; }
 .nav-links a.active { background:rgba(0,255,157,.09); border-bottom:1px solid var(--green); }
-
-/* Mobile hamburger */
 .nav-toggle { display:none; background:transparent; border:1px solid var(--green); color:var(--green); font-size:1.1rem; padding:4px 8px; cursor:pointer; border-radius:4px; }
 
 /* 9. BLOG GLOW BUTTON */
@@ -98,8 +119,22 @@ nav > span { color:var(--green); font-weight:700; letter-spacing:2px; font-size:
 .blog-link::before { content:""; position:absolute; inset:-2px; background:linear-gradient(45deg,#00ffa2,#00ffcc,#00ffa2); border-radius:8px; filter:blur(8px); opacity:.6; z-index:-1; animation:glowPulse 3s ease-in-out infinite; }
 .blog-link:active { transform:scale(.95); }
 
-/* 10. HERO */
-.hero { display:flex; align-items:center; justify-content:space-between; gap:50px; min-height:100vh; padding:88px var(--px) 56px; overflow:hidden; }
+/* ======================================================
+   10. HERO
+   position: relative + z-index: 1 lifts content
+   above canvas/grid layer (z-index: 0)
+   ====================================================== */
+.hero {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    min-height: 100vh;
+    padding: 88px var(--px) 56px;
+    overflow: hidden;
+}
 .hero-content { flex:1; z-index:2; max-width:620px; }
 .system-status { font-size:.7rem; color:var(--green); letter-spacing:2px; margin-bottom:10px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; opacity:.9; }
 .status-dot { width:8px; height:8px; background:var(--green); border-radius:50%; display:inline-block; animation:blink 1.5s infinite; box-shadow:0 0 8px var(--green); flex-shrink:0; }
@@ -108,13 +143,48 @@ nav > span { color:var(--green); font-weight:700; letter-spacing:2px; font-size:
 .hero-summary { font-size:clamp(.82rem,1.4vw,.94rem); line-height:1.8; color:var(--dim); margin:0 0 26px; }
 #heroText, #heroImage { transition:transform .15s linear, opacity .15s linear, filter .15s linear; will-change:transform,opacity,filter; }
 
-/* 11. CTA BUTTONS */
-.cta-group { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:22px; }
-.btn-system, .btn-outline { display:inline-block; padding:10px 22px; font-family:'JetBrains Mono',monospace; font-weight:700; font-size:.78rem; letter-spacing:1px; text-decoration:none; text-align:center; cursor:pointer; transition:.25s ease; border-radius:4px; }
+/* ======================================================
+   11. CTA BUTTONS
+   inline-flex for icon + text alignment
+   nowrap keeps all 4 on one line on desktop
+   ====================================================== */
+.cta-group {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.btn-system, .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: .76rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: .25s ease;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
 .btn-system  { border:1px solid var(--green); color:var(--green); background:transparent; }
 .btn-system:hover  { background:var(--green); color:var(--bg); box-shadow:0 0 20px rgba(0,255,157,.4); }
 .btn-outline { border:1px solid var(--blue); color:var(--blue); background:transparent; }
 .btn-outline:hover { background:var(--blue); color:var(--bg); box-shadow:0 0 20px rgba(0,212,255,.4); }
+
+/* Button SVG icons */
+.btn-system svg, .btn-outline svg {
+    flex-shrink: 0;
+    transition: transform .25s ease;
+}
+.btn-system:hover svg, .btn-outline:hover svg {
+    transform: scale(1.15);
+}
 
 /* 12. AVAILABILITY BOX */
 .availability-box { display:inline-block; padding:13px 18px; border:1px solid rgba(0,255,180,.22); border-radius:10px; background:rgba(0,255,180,.04); backdrop-filter:blur(4px); animation:fadeUp .6s ease .3s both; }
@@ -123,7 +193,7 @@ nav > span { color:var(--green); font-weight:700; letter-spacing:2px; font-size:
 .availability-box li { color:rgba(255,255,255,.8); font-size:.79rem; margin-bottom:4px; }
 
 /* 13. HIGHLIGHT STRIP */
-.highlight-box { text-align:center; padding:15px var(--px); border-top:1px solid rgba(0,255,180,.1); border-bottom:1px solid rgba(0,255,180,.1); background:rgba(0,255,180,.02); position:relative; overflow:hidden; }
+.highlight-box { position:relative; z-index:1; text-align:center; padding:15px var(--px); border-top:1px solid rgba(0,255,180,.1); border-bottom:1px solid rgba(0,255,180,.1); background:rgba(0,255,180,.02); overflow:hidden; }
 .highlight-box::before { content:""; position:absolute; left:0; top:0; width:3px; height:100%; background:var(--accent); box-shadow:0 0 10px var(--accent); }
 .highlight-box p { color:var(--accent); font-size:clamp(.76rem,1.7vw,.9rem); letter-spacing:2px; text-transform:uppercase; opacity:.8; }
 
@@ -131,7 +201,19 @@ nav > span { color:var(--green); font-weight:700; letter-spacing:2px; font-size:
 .image-container { flex:0 0 auto; display:flex; justify-content:center; align-items:center; width:clamp(230px,36%,400px); }
 .profile-img { width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:18px; border:1px solid rgba(0,255,170,.16); box-shadow:0 0 50px rgba(0,255,170,.06), 0 20px 60px rgba(0,0,0,.5); }
 
-/* 15. SECTION BASE */
+/* ======================================================
+   15. SECTION BASE
+   position: relative + z-index: 1 on ALL content sections
+   ensures everything renders above canvas/grid
+   ====================================================== */
+.section,
+.about-section,
+.skills-section,
+.highlight-box {
+    position: relative;
+    z-index: 1;
+}
+
 .section { padding:var(--py) var(--px); }
 .section-title { color:var(--accent); letter-spacing:2px; font-size:17px; margin-bottom:28px; display:flex; align-items:center; gap:14px; }
 .section-title::after { content:""; flex:1; height:1px; background:linear-gradient(90deg,var(--card-border),transparent); max-width:280px; }
@@ -199,8 +281,20 @@ nav > span { color:var(--green); font-weight:700; letter-spacing:2px; font-size:
 @media(hover:none){ .github-popup, .leetcode-popup{ display:none !important; } }
 @media(max-width:768px){ .github-icon, .leetcode-icon{ width:36px; height:36px; padding:6px; background:rgba(0,255,180,.07); border-radius:8px; box-shadow:0 0 8px rgba(0,255,180,.2); } .github-icon img, .leetcode-icon img{ width:20px; height:20px; } }
 
-/* 23. FOOTER */
-.footer { margin-top:80px; padding:46px var(--px) 0; border-top:1px solid rgba(0,255,180,.16); background:rgba(0,255,180,.02); backdrop-filter:blur(10px); font-family:'JetBrains Mono','Courier New',monospace; }
+/* ======================================================
+   23. FOOTER
+   position: relative + z-index: 1
+   ====================================================== */
+.footer {
+    position: relative;
+    z-index: 1;
+    margin-top: 80px;
+    padding: 46px var(--px) 0;
+    border-top: 1px solid rgba(0,255,180,.16);
+    background: rgba(0,255,180,.02);
+    backdrop-filter: blur(10px);
+    font-family: 'JetBrains Mono','Courier New',monospace;
+}
 .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:36px; padding-bottom:36px; }
 .footer-terminal, .footer-worldclock, .footer-contact { font-size:13px; line-height:1.75; }
 .footer .highlight { color:var(--accent); font-weight:700; }
@@ -236,29 +330,27 @@ nav > span { color:var(--green); font-weight:700; letter-spacing:2px; font-size:
     :root{ --px:16px; --py:48px; }
     body{ font-size:13px; }
 
-    /* NAV: hamburger */
     .nav-toggle { display:block; }
     .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background:rgba(5,5,5,.98); flex-direction:column; align-items:flex-start; padding:12px 16px 16px; border-bottom:1px solid var(--border); gap:4px; }
     .nav-links.open { display:flex; }
     .nav-links a { font-size:12px; padding:7px 10px; width:100%; }
 
-    /* HERO */
     .hero { flex-direction:column; padding:96px 16px 40px; gap:24px; text-align:center; }
     .hero-content { max-width:100%; }
     .image-container { width:100%; }
     .profile-img { width:70%; max-width:240px; margin:0 auto; }
-    .hero-name  { font-size:26px; }
-    .hero-role  { font-size:16px; }
-    .hero-summary { font-size:12.5px; padding:0 4px; }
+    .hero-name   { font-size:26px; }
+    .hero-role   { font-size:16px; }
+    .hero-summary{ font-size:12.5px; padding:0 4px; }
     .system-status { justify-content:center; font-size:.62rem; }
-    .cta-group { flex-direction:column; align-items:center; }
-    .btn-system, .btn-outline { width:88%; max-width:270px; text-align:center; }
-    .availability-box { width:100%; max-width:290px; margin:0 auto; }
 
-    /* ABOUT */
+    /* Buttons stack on mobile */
+    .cta-group { flex-wrap:wrap; justify-content:center; gap:10px; }
+    .btn-system, .btn-outline { width:88%; max-width:270px; justify-content:center; }
+
+    .availability-box { width:100%; max-width:290px; margin:0 auto; }
     .about-grid-3 { grid-template-columns:1fr; }
 
-    /* FOOTER */
     .footer-grid { grid-template-columns:1fr; text-align:center; }
     .social-icons { justify-content:center; }
     .social-btn   { width:100%; justify-content:center; }
@@ -269,45 +361,4 @@ nav > span { color:var(--green); font-weight:700; letter-spacing:2px; font-size:
 @media(max-width:400px){
     .hero-name  { font-size:22px; }
     .profile-img{ max-width:200px; }
-}
-
-
-/* CTA button icon alignment */
-.btn-system, .btn-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.btn-system svg, .btn-outline svg {
-    flex-shrink: 0;
-    transition: transform 0.25s ease;
-}
-
-.btn-system:hover svg, .btn-outline:hover svg {
-    transform: scale(1.15);
-}
-
-/* Keep CTA buttons on one line */
-.cta-group {
-    flex-wrap: nowrap;
-    gap: 8px;
-}
-
-.btn-system, .btn-outline {
-    padding: 10px 16px;   /* reduce horizontal padding */
-    font-size: 0.75rem;   /* slightly smaller text */
-    white-space: nowrap;  /* prevent text from wrapping inside button */
-}
-
-@media (max-width: 768px) {
-    .cta-group {
-        flex-wrap: wrap;  /* allow wrap on mobile only */
-        justify-content: center;
-    }
-}
-
-.hero, .section, .about-section, .skills-section, .footer {
-    position: relative;
-    z-index: 1;
 }
