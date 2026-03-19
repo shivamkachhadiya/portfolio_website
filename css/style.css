@@ -46,8 +46,16 @@ a { color: inherit; }
 .pulse { animation: blink 2s infinite; }
 
 /* 4. MATRIX CANVAS */
-#matrix-canvas { position:fixed; inset:0; width:100vw; height:100vh; z-index:-1; opacity:.13; pointer-events:none; }
-@media(max-width:768px){ #matrix-canvas{ display:none; } }
+#matrix-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;          /* changed from -1 */
+    opacity: 0.18;       /* slightly higher than before */
+    pointer-events: none;
+    display: block;
+}
 
 /* 5. PRELOADER */
 #preloader { position:fixed; inset:0; background:#000; z-index:9999; display:flex; justify-content:center; align-items:center; }
@@ -57,8 +65,16 @@ a { color: inherit; }
 .progress-fill { height:100%; background:var(--accent); width:0; animation:fillBar 1.5s ease forwards; box-shadow:0 0 8px var(--accent); }
 
 /* 6. TECH GRID */
-.tech-grid { position:fixed; inset:0; z-index:-1; background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px); background-size:clamp(20px,5vw,40px) clamp(20px,5vw,40px); }
-
+.tech-grid {
+    position: fixed;
+    inset: 0;
+    z-index: 0;          /* changed from -1 */
+    background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: clamp(20px,5vw,40px) clamp(20px,5vw,40px);
+    pointer-events: none; /* ADD THIS — prevents grid blocking clicks */
+}
 /* 7. CURSOR */
 @media(hover:none) and (pointer:coarse){ body{cursor:auto} .cursor-dot,.cursor-ring{display:none} }
 @media(hover:hover) and (pointer:fine){ body{cursor:none} }
@@ -66,7 +82,7 @@ a { color: inherit; }
 .cursor-ring { width:28px; height:28px; border:1px solid var(--green); position:fixed; top:0; left:0; border-radius:50%; pointer-events:none; z-index:9998; opacity:0; transition:opacity .15s ease, width .15s ease, height .15s ease, border-color .15s ease; }
 
 /* 8. NAVIGATION */
-nav { position:fixed; top:0; width:100%; padding:14px var(--px); display:flex; justify-content:space-between; align-items:center; background:rgba(5,5,5,.95); border-bottom:1px solid var(--border); z-index:1000; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
+nav { position:fixed; top:0; width:100%;z-index: 1000;   padding:14px var(--px); display:flex; justify-content:space-between; align-items:center; background:rgba(5,5,5,.95); border-bottom:1px solid var(--border); z-index:1000; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
 nav > span { color:var(--green); font-weight:700; letter-spacing:2px; font-size:.84rem; }
 .nav-links { display:flex; align-items:center; gap:2px; flex-wrap:wrap; }
 .nav-links a { padding:4px 8px; color:var(--green); text-decoration:none; font-size:.8rem; text-transform:uppercase; letter-spacing:1px; opacity:.7; transition:opacity .2s, background .2s; border-radius:4px; }
@@ -289,4 +305,9 @@ nav > span { color:var(--green); font-weight:700; letter-spacing:2px; font-size:
         flex-wrap: wrap;  /* allow wrap on mobile only */
         justify-content: center;
     }
+}
+
+.hero, .section, .about-section, .skills-section, .footer {
+    position: relative;
+    z-index: 1;
 }
