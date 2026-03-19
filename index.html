@@ -4,86 +4,49 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon for browsers -->
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
 
-    <!-- SEO CORE -->
-    <!-- <title>Shivam Kachhadiya | Low Latency C++ Engineer | HFT Systems | Concurrency | Linux</title> -->
-    <title>Shivam Kachhadiya</title>
+    <title>Shivam Kachhadiya | Low Latency C++ Engineer | HFT Systems | Concurrency | Linux</title>
     <meta name="description"
-        content="Shivam Kachhadiya is a Low Latency C++ Engineer specializing in High Frequency Trading systems, lock-free concurrency, multithreading, Linux internals, and high-performance system design. Portfolio showcasing order matching engine, lock-free messaging framework, and Linux system projects.">
+        content="Shivam Kachhadiya is a Low Latency C++ Engineer specializing in High Frequency Trading systems, lock-free concurrency, multithreading, Linux internals, and high-performance system design.">
     <meta name="keywords"
         content="Shivam Kachhadiya, C++ engineer, low latency systems, HFT engineer, high frequency trading, lock free programming, concurrency, multithreading, Linux internals, order matching engine, portfolio, systems programming">
     <meta name="author" content="Shivam Kachhadiya">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://shivamsys.in/">
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
 
-    <!-- Open Graph / Twitter Card -->
     <meta property="og:title" content="Shivam Kachhadiya | Low Latency C++ Engineer">
     <meta property="og:description"
         content="C++ • Lock-Free Concurrency • HFT Systems • Linux Internals • Microsecond Latency">
     <meta property="og:image" content="https://shivamsys.in/assets/images/profile.jpeg">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://shivamsys.in/">
-
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Shivam Kachhadiya | Low Latency C++ Engineer">
     <meta name="twitter:description"
         content="C++ • Lock-Free Concurrency • HFT Systems • Linux Internals • Microsecond Latency">
     <meta name="twitter:image" content="https://shivamsys.in/assets/images/profile.jpeg">
 
-    <!-- Fonts & Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;700&family=Outfit:wght@900&display=swap"
         rel="stylesheet">
-
-    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" />
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com" defer></script>
-
-    <!-- Google Structured Data -->
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Shivam Kachhadiya",
-            "jobTitle": "Low Latency C++ Engineer",
-            "url": "https://shivamsys.in/",
-            "image": "https://shivamsys.in/assets/images/profile.jpeg",
-            "sameAs": [
-                "https://github.com/shivamkachhadiya",
-                "https://www.linkedin.com/in/shivam012/"
-            ],
-            "knowsAbout": [
-                "C++",
-                "Low Latency Systems",
-                "High Frequency Trading",
-                "Concurrency",
-                "Lock-Free Programming",
-                "Linux Internals",
-                "Multithreading",
-                "Order Matching Engine"
-            ]
-        }
+    {"@context":"https://schema.org","@type":"Person","name":"Shivam Kachhadiya","jobTitle":"Low Latency C++ Engineer","url":"https://shivamsys.in/","image":"https://shivamsys.in/assets/images/profile.jpeg","sameAs":["https://github.com/shivamkachhadiya","https://gitlab.com/shivamkachhadiya","https://www.linkedin.com/in/shivam012/"],"knowsAbout":["C++","Low Latency Systems","High Frequency Trading","Concurrency","Lock-Free Programming","Linux Internals","Multithreading","Order Matching Engine"]}
     </script>
 </head>
 
-
-
 <body>
-    <!-- SEO invisible heading for search engines -->
-    <h1 style="position:absolute;left:-9999px;">
-        Shivam Kachhadiya – Low Latency C++ Engineer | High Frequency Trading Systems | Lock-Free Concurrency | Linux
-        Systems Programming
-    </h1>
+    <h1 style="position:absolute;left:-9999px;">Shivam Kachhadiya – Low Latency C++ Engineer | HFT Systems | Lock-Free
+        Concurrency | Linux</h1>
 
     <canvas id="matrix-canvas"></canvas>
+
     <div id="preloader">
         <div class="loader-content">
             <div class="loader-terminal">
@@ -96,122 +59,185 @@
             </div>
         </div>
     </div>
-    <!-- Cursor -->
+
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
-
-    <!-- Background grid -->
     <div class="tech-grid"></div>
 
     <!-- NAV -->
     <nav>
         <span>KACHHADIYA_V4.0</span>
-
-        <div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+        <div class="nav-links" id="navLinks">
             <a href="#hero">Main</a>
             <a href="#about">About</a>
             <a href="#education">Education</a>
-            <a href="#skills">Project</a>
+            <a href="#skills">Projects</a>
             <a href="#contact">Contact</a>
-            <!-- NEW -->
-            <a href="blog/index.html" class="blog-link">Blog 🚀</a>
+            <a href="blog/index.html" class="blog-link">Blog &#x1F680;</a>
         </div>
     </nav>
 
-    <!-- //hero -->
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section class="hero" id="hero">
-
-        <!-- LEFT CONTENT -->
         <div class="hero-content" id="heroText">
-
             <div class="system-status">
-                <span class="status-dot"></span> STATUS: OPTIMIZED_SYSTEM_READY
+                <span class="status-dot"></span>
+                STATUS: OPTIMIZED_SYSTEM_READY &nbsp;|&nbsp; <span class="neon-alt">OPEN_TO_OPPORTUNITIES</span>
             </div>
 
-            <h1 class="hero-name">
-                Shivam <span class="neon">Kachhadiya</span>
-            </h1>
+            <h1 class="hero-name">Shivam <span class="neon">Kachhadiya</span></h1>
 
             <h2 class="hero-role">
                 LOW_LATENCY <br>
-                <span class="neon-alt">C++ ENGINEER</span>
+                <span class="neon-alt">SOFTWARE ENGINEER</span>
             </h2>
 
             <p class="hero-summary">
-                C++ systems and low‑latency developer specializing in lock‑free concurrency, high‑frequency
-                order matching engines, and POSIX‑based Linux system programming. Experienced in designing
-                high‑throughput messaging frameworks and order‑book‑style matching systems with emphasis
-                on microsecond‑level latency and predictable performance.
-
+                Low-latency C++ systems engineer building high-performance trading infrastructure.
+                Designed exchange-style order matching engines handling 1M+ orders and lock-free
+                messaging achieving 10–20M+ msg/sec with sub-microsecond latency.
+                Specialized in concurrency, Linux internals, and high-throughput system design.
             </p>
 
-            <div class="cta-group">
+            <!-- <div class="cta-group">
                 <a href="#skills" class="btn-system">View Projects</a>
                 <a href="assets/resume.pdf" class="btn-outline" download>Download Resume</a>
-                <a href="https://github.com/shivamkachhadiya" class="btn-system">GitHub</a>
+                <a href="https://gitlab.com/shivamkachhadiya" class="btn-system" target="_blank"
+                    rel="noopener">GitLab</a>
+                <a href="https://github.com/shivamkachhadiya" class="btn-outline" target="_blank"
+                    rel="noopener">GitHub</a>
+            </div> -->
+            <div class="cta-group">
+
+                <!-- View Projects -->
+                <a href="#skills" class="btn-system">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <polyline points="16 18 22 12 16 6" />
+                        <polyline points="8 6 2 12 8 18" />
+                    </svg>
+                    View Projects
+                </a>
+
+                <!-- Download Resume -->
+                <a href="assets/resume.pdf" class="btn-outline" download>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Download Resume
+                </a>
+
+                <!-- GitLab -->
+                <a href="https://gitlab.com/shivamkachhadiya" class="btn-system" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z" />
+                    </svg>
+                    GitLab
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/shivamkachhadiya" class="btn-outline" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+
             </div>
-
+            <div class="availability-box">
+                <p>AVAILABLE_FOR:</p>
+                <ul>
+                    <li>&#10004; Low Latency / HFT Roles</li>
+                    <li>&#10004; Systems Engineering (C++)</li>
+                    <li>&#10004; Backend Infrastructure</li>
+                </ul>
+            </div>
         </div>
 
-        <!-- RIGHT IMAGE -->
         <div class="image-container" id="heroImage">
-            <img src="assets/images/profile.jpeg" class="profile-img" width="420" height="560" loading="lazy"
-                decoding="async" alt="Shivam Kachhadiya" />
-
+            <img src="assets/images/profile.jpeg" class="profile-img" width="420" height="560" loading="eager"
+                decoding="async" alt="Shivam Kachhadiya – Low Latency C++ Engineer" />
         </div>
-
     </section>
 
+    <!-- HIGHLIGHT STRIP -->
+    <div class="highlight-box">
+        <p>Built high-performance systems handling millions of operations with microsecond latency.</p>
+    </div>
 
     <!-- ABOUT -->
     <section id="about" class="about-section">
-
         <h2 class="section-title">ABOUT_ME ></h2>
-
         <div class="about-grid-3">
 
-            <!-- WHOAMI -->
             <div class="bio-card">
                 <span class="command">whoami</span>
-                <p>
-                    Systems-focused <strong>C++ Engineer</strong> building low-latency,
-                    high-performance software. Specialized in Linux internals,
-                    concurrency, lock-free systems, and exchange-style trading engines.
+                <p>Systems-focused <strong>C++ Engineer</strong> building low-latency, high-performance software.
+                    Specialized in Linux internals, concurrency, lock-free systems, and exchange-style trading engines.
                 </p>
             </div>
 
-
-            <!-- SKILLS -->
             <div class="bio-card">
                 <span class="command">skills --list</span>
                 <ul class="terminal-list">
-                    <li>Languages: C++17/20, C, Python, Java, C#.NET</li>
-                    <li>Linux • POSIX • fork/exec • IPC • Memory Mgmt</li>
-                    <li>Mutex • Condition Vars • std::atomic • Lock-Free</li>
-                    <li>TCP/IP • Sockets • High-Throughput Messaging</li>
-                    <li>Git • CMake • Wireshark • STL</li>
+                    <li>Languages: C++17/20, C, Java</li>
+                    <li>Linux &bull; POSIX &bull; fork/exec &bull; IPC &bull; Memory Mgmt</li>
+                    <li>Mutex &bull; Condition Vars &bull; std::atomic &bull; Lock-Free</li>
+                    <li>TCP/IP &bull; Sockets &bull; High-Throughput Messaging</li>
+                    <li>Git &bull; CMake &bull; GTest &bull; AddressSanitizer</li>
                 </ul>
             </div>
 
-
-            <!-- ACHIEVEMENTS -->
             <div class="bio-card">
                 <span class="command">achievements --top</span>
                 <ul class="terminal-list">
-                    <li>300+ DSA problems solved</li>
-                    <li>AIR 370 — VITMEE 2025</li>
-                    <li>Active GitHub contributor (C++ Systems/Concurrency)</li>
+                    <li>385+ DSA problems (LeetCode + GFG)</li>
+                    <li>AIR 370 &mdash; VITMEE 2025</li>
+                    <li>Modern C++ Certification (C++17/20)</li>
+                    <li>Active on <a href="https://github.com/shivamkachhadiya" target="_blank"
+                            rel="noopener">GitHub</a> &amp; <a href="https://gitlab.com/shivamkachhadiya"
+                            target="_blank" rel="noopener">GitLab</a></li>
                 </ul>
             </div>
-
         </div>
-
     </section>
 
+    <!-- PERFORMANCE METRICS -->
+    <section class="section">
+        <h2 class="section-title">// PERFORMANCE_METRICS</h2>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <h3>Order Matching Engine</h3>
+                <p>
+                    Throughput: 100K&ndash;1M+ orders/sec<br>
+                    Latency: Microsecond-level processing<br>
+                    Complexity: O(1) insert / cancel / execute<br>
+                    Stress-tested: 1M+ concurrent orders
+                </p>
+            </div>
+            <div class="metric-card">
+                <h3>Lock-Free Messaging</h3>
+                <p>
+                    Throughput: 10&ndash;20M+ messages/sec<br>
+                    Latency: Sub-microsecond median<br>
+                    Performance: ~15&ndash;25&times; faster than mutex<br>
+                    Cache-line aligned &bull; Zero false sharing
+                </p>
+            </div>
+        </div>
+    </section>
 
-
-
+    <!-- EDUCATION -->
     <section id="education" class="section">
         <h2 class="section-title">Education ></h2>
         <div class="education-box verbose">
@@ -219,306 +245,235 @@
             <ul class="edu-list">
                 <li>
                     <span class="timestamp">[2025-PRESENT]</span>
-                    <span class="edu-text"><strong>M.Tech CSE</strong> - VIT Vellore, TN (8.65 GPA)</span>
+                    <span class="edu-text"><strong>M.Tech CSE</strong> &mdash; VIT Vellore, TN (8.65 GPA)</span>
                     <span class="status-tag pulse">ACTIVE</span>
                 </li>
                 <li>
                     <span class="timestamp">[2023-2025]</span>
-                    <span class="edu-text"><strong>MCA</strong> - SRM University, Chennai, TN (9.3 CGPA)</span>
+                    <span class="edu-text"><strong>MCA</strong> &mdash; SRM University, Chennai, TN (9.3 CGPA)</span>
                     <span class="status-tag">COMPLETED</span>
                 </li>
                 <li>
                     <span class="timestamp">[2020-2023]</span>
-                    <span class="edu-text"><strong>BCA</strong> - Atmiya University, Rajkot, GJ (8.6 CGPA)</span>
+                    <span class="edu-text"><strong>BCA</strong> &mdash; Atmiya University, Rajkot, GJ (8.6 CGPA)</span>
                     <span class="status-tag">GRADUATED</span>
                 </li>
             </ul>
-
             <div class="system-footer">
-                <span class="label">GPA_LOADED:</span> <span class="val">SUCCESS</span>
-                <span class="label">TRANSCRIPTS:</span> <span class="val">VERIFIED</span>
+                <span class="label">GPA_LOADED:</span><span class="val">SUCCESS</span>
+                <span class="label">TRANSCRIPTS:</span><span class="val">VERIFIED</span>
             </div>
         </div>
     </section>
-    <!-- SKILLS -->
-    <section id="skills" class="section skills-section">
-        <!-- ROW 3 (PROJECTS) -->
-        <h2 class="section-title">// PROJECTS</h2>
 
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="section">
+        <h2 class="section-title">Certifications ></h2>
+        <div class="education-box verbose">
+            <span class="command">cat certifications.log</span>
+            <ul class="edu-list">
+                <li>
+                    <span class="timestamp">[C++17/20]</span>
+                    <span class="edu-text"><strong>Modern C++ Certification</strong> &mdash; C++17/20 features,
+                        concurrency models, systems programming best practices</span>
+                    <span class="status-tag">VERIFIED</span>
+                </li>
+                <li>
+                    <span class="timestamp">[DSA]</span>
+                    <span class="edu-text"><strong>385+ Problems Solved</strong> &mdash; LeetCode + GeeksforGeeks
+                        (Trees, Graphs, DP, Greedy)</span>
+                    <span class="status-tag pulse">ACTIVE</span>
+                </li>
+            </ul>
+            <div class="system-footer">
+                <span class="label">CERT_STATUS:</span><span class="val">VERIFIED</span>
+                <span class="label">DSA_RANK:</span><span class="val">LOADED</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS + SKILLS -->
+    <section id="skills" class="section skills-section">
+        <h2 class="section-title">// PROJECTS</h2>
         <div class="projects-grid">
 
-            <!-- Project 1 -->
             <div class="skill-card">
                 <h3 class="skill-title">
                     High-Frequency Order Matching Engine
-
                     <a href="https://gitlab.com/shivamkachhadiya/stock-order-matching-engine-cpp.git" target="_blank"
-                        class="github-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
-                            alt="GitHub" />
-
-                        <div class="github-popup">
-                            <strong>GitLab Repo</strong><br>
-                            Matching Engine Source<br>
-                            Click to open →
-                        </div>
+                        rel="noopener" class="github-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gitlab.svg"
+                            alt="GitLab" />
+                        <div class="github-popup"><strong>GitLab Repo</strong><br>Matching Engine Source<br>Click to
+                            open &rarr;</div>
                     </a>
                 </h3>
-
                 <p>
-                    C++17 • Multithreading • Concurrency • Low-Latency Systems<br>
-                    Price–time FIFO order book • O(1) insert/cancel/execute<br>
-                    Producer–consumer pipeline • Mutex/locks/cond vars<br>
-                    100K–1M+ stress tested • Microsecond latency
+                    Built a production-grade exchange-style order matching engine.<br>
+                    Handles 1M+ orders with O(1) operations and microsecond latency.<br>
+                    Multithreaded architecture with zero hot-path heap allocations.<br>
+                    Simulates real-world HFT trading infrastructure.<br><br>
+                    <strong>Why this matters:</strong> Directly replicates the core engine inside every real HFT and
+                    exchange platform.
                 </p>
             </div>
 
-
-            <!-- Project 2 -->
             <div class="skill-card">
                 <h3 class="skill-title">
                     Lock-Free Messaging Framework
-
                     <a href="https://gitlab.com/shivamkachhadiya/lock-free-messaging-frame-work-in-cpp.git"
-                        target="_blank" class="github-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
-                            alt="GitHub" />
-
-                        <div class="github-popup">
-                            <strong>GitHub Repo</strong><br>
-                            Lock-Free Queue Code<br>
-                            Click to open →
-                        </div>
+                        target="_blank" rel="noopener" class="github-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gitlab.svg"
+                            alt="GitLab" />
+                        <div class="github-popup"><strong>GitLab Repo</strong><br>Lock-Free Queue Code<br>Click to open
+                            &rarr;</div>
                     </a>
                 </h3>
-
                 <p>
-                    C++20 • Atomics • Systems Programming • Concurrency<br>
-                    Lock-free SPSC ring buffer • std::atomic ordering<br>
-                    10–20M+ msg/sec • Sub-µs latency<br>
-                    alignas(64) cache-aware design • zero-copy buffers
+                    Designed a lock-free SPSC ring buffer using std::atomic.<br>
+                    Achieves 10&ndash;20M+ messages/sec with sub-microsecond latency.<br>
+                    alignas(64) cache-aware design eliminating false sharing.<br>
+                    Zero-copy preallocated buffers for maximum throughput.<br><br>
+                    <strong>Why this matters:</strong> Lock-free IPC is a critical bottleneck in any low-latency
+                    pipeline.
                 </p>
-
             </div>
 
-
-            <!-- Project 3 -->
             <div class="skill-card">
                 <h3 class="skill-title">
                     Linux Command Line Shell
-
                     <a href="https://gitlab.com/shivamkachhadiya/low-latency-linux-cml.git" target="_blank"
-                        class="github-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
-                            alt="GitHub" />
-
-                        <div class="github-popup">
-                            <strong>GitHub Repo</strong><br>
-                            Shell Implementation<br>
-                            Click to open →
-                        </div>
+                        rel="noopener" class="github-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gitlab.svg"
+                            alt="GitLab" />
+                        <div class="github-popup"><strong>GitLab Repo</strong><br>Shell Implementation<br>Click to open
+                            &rarr;</div>
                     </a>
                 </h3>
-
                 <p>
-                    C++17 • POSIX • Linux System Programming<br>
-                    fork/exec/wait lifecycle • pipes & redirection<br>
-                    Built-in commands • job control<br>
-                    Modular CMake architecture
+                    Developed a Unix-like shell implementing full process lifecycle.<br>
+                    fork/exec/wait &bull; pipes &bull; I/O redirection &bull; job control.<br>
+                    Built-in commands: cd, pwd, ls, history, cp, cat.<br>
+                    Modular CMake build, tested Linux + WSL.<br><br>
+                    <strong>Why this matters:</strong> Proves deep OS-level knowledge essential for systems and HFT
+                    roles.
                 </p>
             </div>
-
         </div>
 
-
-
         <br>
-
         <h2 class="section-title">// SYSTEM_STACK</h2>
 
-        <!-- ROW 1 (PRIMARY) -->
         <div class="skills-grid primary">
             <div class="skill-card wide">
-
                 <h3 class="skill-title">
-                    Core Language – C++
-
-                    <!-- GitHub icon -->
+                    Core Language &ndash; C++
                     <a href="https://github.com/shivamkachhadiya/Complete-Modern-Cpp-Cpp-11-14-17-.git" target="_blank"
-                        class="github-icon">
-
+                        rel="noopener" class="github-icon">
                         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
                             alt="GitHub" />
-
-                        <!-- popup -->
-                        <div class="github-popup">
-                            <strong>GitHub Repo</strong><br>
-                            Modern C++ Notes<br>
-                            C++11/14/17 Practice<br>
-                            Click to open →
-                        </div>
-
+                        <div class="github-popup"><strong>GitHub Repo</strong><br>Modern C++ Notes<br>C++11/14/17
+                            Practice<br>Click to open &rarr;</div>
                     </a>
                 </h3>
-
-                <p>
-                    Modern C++17/20 • STL • Templates • OOP • Design Patterns •
-                    RAII • Smart Pointers • Performance Optimization
-                </p>
-
+                <p>Modern C++17/20 &bull; STL &bull; Templates &bull; OOP &bull; Design Patterns &bull; RAII &bull;
+                    Smart Pointers &bull; Performance Optimization</p>
             </div>
 
-
-
-
             <div class="skill-card wide">
-
-                <!-- Title + icon together -->
                 <h3 class="skill-title">
-                    Data Structures & Algorithms
-
-                    <a href="https://leetcode.com/u/kshivay/" target="_blank" class="leetcode-icon">
-
+                    Data Structures &amp; Algorithms
+                    <a href="https://leetcode.com/u/kshivay/" target="_blank" rel="noopener" class="leetcode-icon">
                         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/leetcode.svg"
                             alt="LeetCode" />
-
-                        <div class="leetcode-popup">
-                            <strong>LeetCode</strong><br>
-                            @kshivay<br>
-                            300+ solved<br>
-                            Click to open →
-                        </div>
-
+                        <div class="leetcode-popup"><strong>LeetCode</strong><br>@kshivay<br>385+ solved<br>Click to
+                            open &rarr;</div>
                     </a>
                 </h3>
-
-
-                <p>
-
-                    300+ problems solved • Trees • Graphs • Heaps • DP • Greedy • Complexity Optimization
-                </p>
-
+                <p>385+ problems solved &bull; Trees &bull; Graphs &bull; Heaps &bull; DP &bull; Greedy &bull;
+                    Complexity Optimization</p>
             </div>
 
             <div class="skill-card small">
-                <h3 class="skill-title">
-                    Tools</h3>
-                <p>Git • GitHub • CMake • g++ • Linux CLI • HTML/CSS/JS</p>
+                <h3 class="skill-title">Tools</h3>
+                <p>Git &bull; GitHub &bull; GitLab &bull; CMake &bull; g++ &bull; GTest &bull; AddressSanitizer &bull;
+                    ThreadSanitizer &bull; Linux CLI</p>
             </div>
         </div>
 
-
-        <!-- ROW 2 (SYSTEMS) -->
-        <div class="projects-grid">
+        <div class="projects-grid" style="margin-top:20px;">
             <div class="skill-card">
-
                 <h3 class="skill-title">
                     Operating Systems
-
-                    <!-- GitHub icon -->
                     <a href="https://github.com/shivamkachhadiya/Low_Latency_Modern_Cpp/tree/main/CONCURRENCY_MOST_MOST_MOST_IMP/MULTIPLE_THREADS_IMP"
-                        target="_blank" class="github-icon">
-
+                        target="_blank" rel="noopener" class="github-icon">
                         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
                             alt="GitHub" />
-
-                        <div class="github-popup">
-                            OS + Concurrency Code<br>
-                            Threads • Locks • Sync<br>
-                            Click to open →
-                        </div>
-
+                        <div class="github-popup">OS + Concurrency Code<br>Threads &bull; Locks &bull; Sync<br>Click to
+                            open &rarr;</div>
                     </a>
                 </h3>
-
-                <p>
-                    Threads • Synchronization • Memory Management • Paging • TLB • Deadlocks
-                </p>
-
+                <p>Threads &bull; Synchronization &bull; Memory Management &bull; Paging &bull; TLB &bull; Deadlocks</p>
             </div>
-
 
             <div class="skill-card">
                 <h3>Computer Networks</h3>
-                <p>
-                    TCP/IP • Flow Control • Sockets • Client-Server Architecture
-                </p>
+                <p>TCP/IP &bull; Flow Control &bull; Sockets &bull; Client-Server Architecture</p>
             </div>
 
             <div class="skill-card">
                 <h3>Databases</h3>
-                <p>
-                    SQL • ACID • Transactions • Concurrency Control • Indexing
-                </p>
+                <p>SQL &bull; ACID &bull; Transactions &bull; Concurrency Control &bull; Indexing</p>
             </div>
         </div>
-
-
-
-
     </section>
 
-
-
-
-    <!-- =====================================================
-     FOOTER / CONTACT SECTION
-     Terminal styled animated professional footer
-     ===================================================== -->
-    <!-- ===================================================== -->
-    <!-- FOOTER : Terminal Style + World Clock + Contact Form -->
-    <!-- ===================================================== -->
+    <!-- FOOTER -->
     <footer id="contact" class="footer">
-
-        <!-- ================= TOP GRID ================= -->
         <div class="footer-grid">
 
-            <!-- ================= LEFT : TERMINAL INFO ================= -->
             <div class="footer-terminal">
-                <p>> SYSTEM_STATUS : STABLE</p>
-                <p>> VISITORS : <span id="visitorCount">0</span></p>
-                <p>> LOCAL_TIME : <span id="liveTime"></span></p>
+                <p>&gt; SYSTEM_STATUS : STABLE</p>
+                <p>&gt; VISITORS : <span id="visitorCount">0</span></p>
+                <p>&gt; LOCAL_TIME : <span id="liveTime"></span></p>
                 <p class="highlight">END_OF_TRANSMISSION</p>
             </div>
 
-            <!-- ================= CENTER : WORLD CLOCK ================= -->
             <div class="footer-worldclock">
                 <h4>// GLOBAL_TIME</h4>
                 <div class="clock-list">
-                    <p>🌎 UTC : <span id="utc"></span></p>
-                    <p>🇮🇳 India : <span id="india"></span></p>
-                    <p>🇺🇸 New York : <span id="ny"></span></p>
-                    <p>🇬🇧 London : <span id="london"></span></p>
-                    <p>🇯🇵 Tokyo : <span id="tokyo"></span></p>
-                    <p>🇦🇺 Sydney : <span id="sydney"></span></p>
-                    <p>🇧🇷 Brazil : <span id="brazil"></span></p>
+                    <p>&#127758; UTC : <span id="utc"></span></p>
+                    <p>&#127470;&#127475; India : <span id="india"></span></p>
+                    <p>&#127482;&#127480; New York : <span id="ny"></span></p>
+                    <p>&#127468;&#127463; London : <span id="london"></span></p>
+                    <p>&#127471;&#127477; Tokyo : <span id="tokyo"></span></p>
+                    <p>&#127462;&#127482; Sydney : <span id="sydney"></span></p>
+                    <p>&#127463;&#127479; Brazil : <span id="brazil"></span></p>
                 </div>
             </div>
 
-            <!-- ================= RIGHT : CONTACT + NAV ================= -->
             <div class="footer-contact">
-
                 <h4>// NAVIGATION</h4>
                 <div class="footer-nav">
                     <a href="#hero" class="footer-link">TOP</a>
-
-                    <a href="#about" class="footer-link">About Me</a>
+                    <a href="#about" class="footer-link">About</a>
                     <a href="#education" class="footer-link">Education</a>
+                    <a href="#certifications" class="footer-link">Certs</a>
                     <a href="#skills" class="footer-link">Projects</a>
                     <a href="#contact" class="footer-link">Contact</a>
                 </div>
 
                 <h4>// CONTACT_ME</h4>
                 <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/shivam012/" target="_blank" class="social-btn">
+                    <a href="https://www.linkedin.com/in/shivam012/" target="_blank" rel="noopener" class="social-btn">
                         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"
                             alt="LinkedIn">
-                        <span>Shivam Kachhadiya</span>
+                        <span>LinkedIn</span>
                     </a>
-                    <a href="https://wa.me/9712798452" target="_blank" class="social-btn">
+                    <a href="https://wa.me/9712798452" target="_blank" rel="noopener" class="social-btn">
                         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg"
                             alt="WhatsApp">
-                        <span>9712798452</span>
+                        <span>WhatsApp</span>
                     </a>
                     <a href="mailto:shivamkachhadiya012@gmail.com" class="social-btn">
                         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email">
@@ -526,31 +481,23 @@
                     </a>
                 </div>
 
-                <form action="mailto:shivamkachhadiya68@gmail.com" method="POST" enctype="text/plain">
+                <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                     <input type="text" name="Name" placeholder="Your Name" required>
                     <input type="email" name="Email" placeholder="Your Email" required>
                     <textarea name="Message" placeholder="Message..." required></textarea>
-                    <button type="submit">Send →</button>
+                    <button type="submit" id="submit-btn">Send &rarr;</button>
+                    <p id="form-status" style="margin-top:8px;font-size:0.82rem;display:none;"></p>
                 </form>
-
             </div>
-
         </div>
 
-        <!-- ================= BOTTOM ================= -->
         <div class="footer-bottom">
-            © <span id="year"></span> Shivam Kachhadiya — All Rights Reserved
+            &copy; <span id="year"></span> Shivam Kachhadiya &mdash; All Rights Reserved
         </div>
-
     </footer>
 
-
-    <!-- JS (ALWAYS before body close) -->
     <script src="js/main.js"></script>
     <script src="js/footer.js"></script>
-    <!-- deploy -->
-    <!-- trigger build -->
-    <!-- rebuild -->
 </body>
 
 </html>

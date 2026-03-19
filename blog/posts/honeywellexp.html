@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- ===== PRIMARY SEO ===== -->
+
+    <title>Honeywell Interview Experience 2026 | C++ System Programming Questions | Shivam Kachhadiya</title>
+
+    <meta name="description"
+        content="Real Honeywell interview experience covering C++ concepts, printf implementation, IPC, sockets, mutex vs semaphore, storage classes, compiler linker loader and system programming questions." />
+
+    <meta name="keywords"
+        content="Honeywell interview experience, Honeywell C++ interview questions, system programming interview questions, mutex semaphore interview questions, printf implementation interview, IPC interview questions" />
+
+    <meta name="author" content="Shivam Kachhadiya" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="canonical" href="https://shivamsys.in/blog/posts/honeywell-interview-experience.html" />
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Honeywell Interview Experience 2026" />
+    <meta property="og:description" content="Real Honeywell system programming and C++ interview questions" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://shivamsys.in/blog/posts/honeywell-interview-experience.html" />
+
+    <script src="../js/main.js" defer></script>
+
+    <link rel="stylesheet" href="../css/blog.css" />
+    <link rel="preload" href="../css/blog.css" as="style">
+
+    <script src="../js/blog-layout.js" defer></script>
+    <script src="../js/cursor.js" defer></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Honeywell Interview Experience 2026",
+ "author":{
+   "@type":"Person",
+   "name":"Shivam Kachhadiya"
+ },
+ "publisher":{
+   "@type":"Organization",
+   "name":"ShivamSys"
+ },
+ "url":"https://shivamsys.in/blog/posts/honeywell-interview-experience.html",
+ "keywords":["Honeywell","System Programming","C++","Interview Experience"]
+}
+</script>
+
+</head>
+
+<body>
+
+    <header class="navbar">
+        <h2><a href="/">ShivamSys</a></h2>
+        <nav>
+            <a href="/blog/">← Back to Blog</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <article class="post-container">
+
+            <h1>Honeywell Interview Experience (System Programming / C++)</h1>
+
+            <p class="post-meta">
+                Written by <strong>Shivam Kachhadiya</strong> •
+                <time datetime="2026-03-14">Last Updated: Mar 14, 2026</time>
+            </p>
+
+            <p>
+                This is my rough experience from a <strong>Honeywell technical interview</strong>.
+                Most of the discussion focused on <b>C++ fundamentals, system programming concepts
+                    and operating system knowledge</b>.
+            </p>
+
+            <p>
+                Some questions I answered confidently while a few topics were new for me.
+                Overall the interview focused heavily on <strong>low level programming concepts</strong>.
+            </p>
+
+            ---
+
+            <h2>1. printf Implementation</h2>
+
+            <p>
+                The interviewer asked how <code>printf()</code> works internally.
+                I knew some basic idea but I could not explain the full implementation.
+            </p>
+
+            <p>
+                They expected explanation about:
+            </p>
+
+            <ul>
+                <li>Variable argument handling (<code>va_list</code>)</li>
+                <li>Format string parsing</li>
+                <li>Conversion specifiers</li>
+                <li>Output writing to stdout</li>
+            </ul>
+
+            <p>
+                This question made me realize I should study the internal implementation
+                of standard library functions.
+            </p>
+
+            ---
+
+            <h2>2. Socket Communication</h2>
+
+            <p>
+                The interviewer asked whether a program can communicate using sockets.
+            </p>
+
+            <p>
+                I explained that sockets are used for communication between nodes
+                in a network. However the interviewer wanted a deeper explanation about
+                <strong>process communication using sockets</strong>.
+            </p>
+
+            <p>
+                I also mentioned IPC mechanisms such as:
+            </p>
+
+            <ul>
+                <li>Message Queues</li>
+                <li>Shared Memory</li>
+                <li>Pipes</li>
+            </ul>
+
+            ---
+
+            <h2>3. Friend Class and Friend Function</h2>
+
+            <p>
+                I explained <strong>friend class</strong> properly,
+                but I had never implemented <b>friend functions</b> before,
+                so I honestly told the interviewer that I was not very familiar with it.
+            </p>
+
+            ---
+
+            <h2>4. Volatile Keyword</h2>
+
+            <p>
+                I knew the concept of volatile memory,
+                but the interviewer specifically asked about the
+                <b>volatile keyword in C/C++</b>.
+            </p>
+
+            <p>
+                I was not able to explain it fully at that time.
+            </p>
+
+            ---
+
+            <h2>5. Static Function Memory</h2>
+
+            <p>
+                Question:
+                <b>Does a static function take memory?</b>
+            </p>
+
+            <p>
+                I explained the behavior of the <code>static</code> keyword
+                and function scope based on my understanding.
+            </p>
+
+            ---
+
+            <h2>6. Global Static Function Usage</h2>
+
+            <p>
+                The interviewer asked about the use of global static functions.
+            </p>
+
+            <p>
+                I explained concepts of:
+            </p>
+
+            <ul>
+                <li>Scope</li>
+                <li>Lifetime</li>
+                <li>Internal linkage</li>
+            </ul>
+
+            ---
+
+            <h2>7. Storage Classes</h2>
+
+            <p>
+                Discussion about storage class specifiers including:
+            </p>
+
+            <ul>
+                <li>auto</li>
+                <li>register</li>
+                <li>static</li>
+                <li>extern</li>
+            </ul>
+
+            <p>
+                They mainly focused on <b>lifetime and scope of variables</b>.
+            </p>
+
+            ---
+
+            <h2>8. File Editing Without Large Buffer</h2>
+
+            <p>
+                Interesting question:
+            </p>
+
+            <p>
+                If you have a text file and want to insert a new line at the
+                <b>6th position</b>, how would you do it without loading the
+                entire file into memory?
+            </p>
+
+            <p>
+                My answer was that we can use a small temporary buffer
+                to store intermediate lines while rewriting the file.
+                The interviewer smiled during this explanation.
+            </p>
+
+            ---
+
+            <h2>9. Compiler → Linker → Loader</h2>
+
+            <p>
+                The interviewer asked what happens when we execute a program.
+            </p>
+
+            <p>
+                I explained the flow:
+            </p>
+
+            <ul>
+                <li>Source code compiled by compiler</li>
+                <li>Object files generated</li>
+                <li>Linker combines libraries</li>
+                <li>Loader loads executable into memory</li>
+            </ul>
+
+            ---
+
+            <h2>10. Purpose of main() Function</h2>
+
+            <p>
+                I explained that:
+            </p>
+
+            <ul>
+                <li><code>main()</code> is the entry point of program execution</li>
+                <li>Program execution starts from main</li>
+                <li>Objects are created and program flow begins there</li>
+            </ul>
+
+            ---
+
+            <h2>11. Questions on My Project</h2>
+
+            <p>
+                The interviewer asked about:
+            </p>
+
+            <ul>
+                <li>Uniqueness of my project</li>
+                <li>Challenges faced</li>
+                <li>Implementation details</li>
+            </ul>
+
+            <p>
+                This part of the interview went very well because I explained
+                my project architecture and design decisions clearly.
+            </p>
+
+            ---
+
+            <h2>12. Mutex vs Semaphore</h2>
+
+            <p>
+                Question:
+                Can we implement a semaphore using mutex and vice versa?
+            </p>
+
+            <p>
+                I explained both synchronization mechanisms using examples
+                and diagrams on paper.
+            </p>
+
+            ---
+
+            <h2>13. Template Classes</h2>
+
+            <p>
+                Discussion about benefits of template classes.
+            </p>
+
+            <p>
+                I explained that templates allow
+                <b>generic programming</b> and code reuse.
+            </p>
+
+            ---
+
+            <h2>14. Object Memory Allocation</h2>
+
+            <p>
+                The interviewer asked when memory is allocated for objects.
+            </p>
+
+            <p>
+                I explained that memory is allocated when an object
+                is created, and I gave a small example.
+            </p>
+
+            ---
+
+            <h2>Final Thoughts</h2>
+
+            <p>
+                Overall the interview focused heavily on
+                <b>system programming concepts, C++ fundamentals,
+                    and operating system knowledge</b>.
+            </p>
+
+            <p>
+                The biggest takeaway for me was that
+                <strong>understanding low level concepts deeply is very important.</strong>
+            </p>
+
+            <p>
+                Topics I plan to improve after this interview:
+            </p>
+
+            <ul>
+                <li>printf internal implementation</li>
+                <li>volatile keyword</li>
+                <li>friend functions</li>
+                <li>advanced IPC mechanisms</li>
+            </ul>
+
+            ---
+
+            <p style="margin-top:40px;">
+                <span class="tag">Honeywell</span>
+                <span class="tag">C++</span>
+                <span class="tag">System Programming</span>
+                <span class="tag">Interview Experience</span>
+                <span class="tag">Operating Systems</span>
+            </p>
+
+        </article>
+
+    </main>
+
+</body>
+
+</html>
