@@ -122,7 +122,7 @@
                 </a>
 
                 <!-- Download Resume -->
-                <a href="assets/resume.pdf" class="btn-outline" download>
+                <!-- <a href="assets/resume.pdf" class="btn-outline" download>
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         aria-hidden="true">
@@ -131,7 +131,219 @@
                         <line x1="12" y1="15" x2="12" y2="3" />
                     </svg>
                     Download Resume
-                </a>
+                </a> -->
+                <!-- resume -->
+                <!-- Replace your existing <a> with this -->
+                <button class="btn-outline" onclick="openResume()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    View Resume
+                </button>
+
+                <div id="resumeModal" style="
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(0,0,0,0.75); backdrop-filter:blur(4px);
+  align-items:center; justify-content:center; padding:20px;">
+
+                    <div style="
+    background:#1a1a2e; border-radius:12px; width:100%; max-width:860px;
+    height:90vh; display:flex; flex-direction:column;
+    box-shadow:0 25px 60px rgba(0,0,0,0.5); overflow:hidden;">
+
+                        <!-- Modal Header -->
+                        <div style="
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.1);">
+                            <span style="color:#fff; font-weight:600; font-size:15px;">📄 Resume</span>
+                            <div style="display:flex; gap:10px; align-items:center;">
+                                <a href="assets/resume.pdf" download style="
+          color:#94a3b8; font-size:12px; text-decoration:none; padding:5px 12px;
+          border:1px solid rgba(255,255,255,0.15); border-radius:6px;
+          transition:all .2s; display:flex; align-items:center; gap:5px;"
+                                    onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.4)'"
+                                    onmouseout="this.style.color='#94a3b8';this.style.borderColor='rgba(255,255,255,0.15)'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                        <polyline points="7 10 12 15 17 10" />
+                                        <line x1="12" y1="15" x2="12" y2="3" />
+                                    </svg>
+                                    Download
+                                </a>
+                                <button onclick="closeResume()" style="
+          background:rgba(255,255,255,0.08); border:none; color:#fff; cursor:pointer;
+          width:32px; height:32px; border-radius:8px; font-size:18px; line-height:1;
+          display:flex; align-items:center; justify-content:center; transition:background .2s;"
+                                    onmouseover="this.style.background='rgba(255,255,255,0.18)'"
+                                    onmouseout="this.style.background='rgba(255,255,255,0.08)'">✕</button>
+                            </div>
+                        </div>
+
+                        <!-- Preloader -->
+                        <div id="resumeLoader" style="
+      position:absolute; inset:0; z-index:10;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      background:#1a1a2e; border-radius:0 0 12px 12px;
+      gap:16px; transition:opacity .4s ease;">
+
+                            <!-- Spinner -->
+                            <div style="position:relative; width:52px; height:52px;">
+                                <svg viewBox="0 0 52 52" width="52" height="52"
+                                    style="animation:spin 1.2s linear infinite;">
+                                    <circle cx="26" cy="26" r="22" fill="none" stroke="rgba(255,255,255,0.08)"
+                                        stroke-width="4" />
+                                    <circle cx="26" cy="26" r="22" fill="none" stroke="#6366f1" stroke-width="4"
+                                        stroke-linecap="round" stroke-dasharray="138" stroke-dashoffset="100" />
+                                </svg>
+                                <!-- PDF icon in center -->
+                                <div style="
+          position:absolute; inset:0; display:flex;
+          align-items:center; justify-content:center;
+          font-size:16px;">📄</div>
+                            </div>
+
+                            <!-- Loading text with animated dots -->
+                            <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                                <span style="color:#e2e8f0; font-size:14px; font-weight:600; letter-spacing:.3px;">
+                                    Loading Resume
+                                    <span id="loadingDots">.</span>
+                                </span>
+                                <span style="color:#64748b; font-size:12px;">Please wait a moment...</span>
+                            </div>
+
+                            <!-- Progress bar -->
+                            <div style="
+        width:180px; height:3px; background:rgba(255,255,255,0.08);
+        border-radius:999px; overflow:hidden;">
+                                <div id="loaderBar" style="
+          height:100%; width:0%; background:linear-gradient(90deg,#6366f1,#a78bfa);
+          border-radius:999px; transition:width .3s ease;
+          animation:loadprogress 2s ease-in-out forwards;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PDF Viewer -->
+                        <iframe id="resumeFrame" src=""
+                            style="flex:1; border:none; width:100%; opacity:0; transition:opacity .5s ease;"
+                            onload="onIframeLoad()">
+                        </iframe>
+                    </div>
+                </div>
+
+                <style>
+                    @keyframes spin {
+                        to {
+                            transform: rotate(360deg);
+                        }
+                    }
+
+                    @keyframes loadprogress {
+                        0% {
+                            width: 0%;
+                        }
+
+                        30% {
+                            width: 45%;
+                        }
+
+                        60% {
+                            width: 70%;
+                        }
+
+                        85% {
+                            width: 88%;
+                        }
+
+                        100% {
+                            width: 95%;
+                        }
+                    }
+                </style>
+
+                <script>
+                    let dotsInterval = null;
+
+                    function openResume() {
+                        const modal = document.getElementById('resumeModal');
+                        const frame = document.getElementById('resumeFrame');
+                        const loader = document.getElementById('resumeLoader');
+                        const bar = document.getElementById('loaderBar');
+
+                        // Reset state
+                        frame.style.opacity = '0';
+                        frame.src = '';
+                        loader.style.opacity = '1';
+                        loader.style.display = 'flex';
+                        bar.style.animation = 'none';
+                        bar.style.width = '0%';
+
+                        modal.style.display = 'flex';
+
+                        // Restart progress bar animation
+                        setTimeout(() => {
+                            bar.style.animation = 'loadprogress 2s ease-in-out forwards';
+                        }, 50);
+
+                        // Animated loading dots
+                        let dotCount = 1;
+                        dotsInterval = setInterval(() => {
+                            document.getElementById('loadingDots').textContent = '.'.repeat(dotCount);
+                            dotCount = dotCount >= 3 ? 1 : dotCount + 1;
+                        }, 400);
+
+                        // Load PDF (slight delay so modal animation settles first)
+                        setTimeout(() => { frame.src = 'assets/resume.pdf'; }, 200);
+                    }
+
+                    function onIframeLoad() {
+                        const loader = document.getElementById('resumeLoader');
+                        const frame = document.getElementById('resumeFrame');
+                        const bar = document.getElementById('loaderBar');
+
+                        // Fill bar to 100%
+                        bar.style.animation = 'none';
+                        bar.style.width = '100%';
+
+                        clearInterval(dotsInterval);
+
+                        // Fade out loader, fade in PDF
+                        setTimeout(() => {
+                            loader.style.opacity = '0';
+                            frame.style.opacity = '1';
+                            setTimeout(() => { loader.style.display = 'none'; }, 400);
+                        }, 400);
+                    }
+
+                    function closeResume() {
+                        const modal = document.getElementById('resumeModal');
+                        const frame = document.getElementById('resumeFrame');
+                        const loader = document.getElementById('resumeLoader');
+
+                        clearInterval(dotsInterval);
+                        modal.style.display = 'none';
+                        frame.src = '';         // stop the PDF from loading if modal closed early
+                        loader.style.display = 'flex';
+                        loader.style.opacity = '1';
+                        frame.style.opacity = '0';
+                    }
+
+                    // Close on backdrop click
+                    document.getElementById('resumeModal').addEventListener('click', function (e) {
+                        if (e.target === this) closeResume();
+                    });
+
+                    // Close on Escape
+                    document.addEventListener('keydown', function (e) {
+                        if (e.key === 'Escape') closeResume();
+                    });
+                </script>
 
                 <!-- GitLab -->
                 <a href="https://gitlab.com/shivamkachhadiya" class="btn-system" target="_blank" rel="noopener">
