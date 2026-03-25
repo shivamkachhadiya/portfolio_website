@@ -13,6 +13,27 @@ body {
     line-height: 1.6;
 }
 
+/* Skip link (accessibility) */
+.skip-link{
+    position:absolute;
+    left:-999px;
+    top: 10px;
+    z-index: 99999;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.85);
+    border: 1px solid rgba(0,255,162,0.6);
+    color: #00ffa2;
+    text-decoration: none;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+.skip-link:focus{
+    left: 14px;
+    outline: none;
+    box-shadow: 0 0 24px rgba(0,255,162,0.25);
+}
+
 /* ===== NAVBAR ===== */
 .navbar {
     display: flex;

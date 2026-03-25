@@ -35,7 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navToggle && navLinks) {
         navToggle.addEventListener('click', () => {
             navLinks.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', String(navLinks.classList.contains('open')));
         });
+        navToggle.setAttribute('aria-expanded', String(navLinks.classList.contains('open')));
         // Close when a link is clicked
         navLinks.querySelectorAll('a').forEach(a => {
             a.addEventListener('click', () => navLinks.classList.remove('open'));
@@ -105,8 +107,12 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     links.forEach(a => a.classList.remove('active'));
+                    links.forEach(a => a.removeAttribute('aria-current'));
                     const m = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-                    if (m) m.classList.add('active');
+                    if (m) {
+                        m.classList.add('active');
+                        m.setAttribute('aria-current', 'page');
+                    }
                 }
             });
         }, { threshold: 0.3 }).observe(s);
