@@ -433,10 +433,13 @@ nav {
 .section { padding:var(--py) var(--px); }
 .section-title { color:var(--accent); letter-spacing:2px; font-size:17px; margin-bottom:28px; display:flex; align-items:center; gap:14px; }
 .section-title::after { content:""; flex:1; height:1px; background:linear-gradient(90deg,var(--card-border),transparent); max-width:280px; }
+.section-description { max-width:820px; margin-bottom:20px; color:rgba(255,255,255,.78); line-height:1.75; font-size:13.5px; }
+.subsection-title { color:rgba(0,255,180,.9); letter-spacing:1.5px; font-size:15px; margin:32px 0 18px; display:flex; align-items:center; gap:10px; }
+.subsection-title::after { content:""; flex:1; height:1px; background:linear-gradient(90deg,var(--card-border),transparent); max-width:220px; }
 
 /* 16. ABOUT */
 .about-section { padding:var(--py) var(--px); }
-.about-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); }
+.about-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); max-width:1200px; margin:0 auto; }
 .bio-card { padding:22px; border:1px solid var(--card-border); background:var(--card-bg); border-radius:var(--r); backdrop-filter:blur(6px); transition:border-color .25s, transform .25s, box-shadow .25s; }
 .bio-card:hover { border-color:var(--accent); transform:translateY(-4px); box-shadow:0 8px 28px var(--card-glow); }
 .bio-card p { font-size:13px; line-height:1.65; color:rgba(255,255,255,.8); margin-top:4px; }
@@ -449,7 +452,7 @@ nav {
 @media(max-width:1000px){ .about-grid-3{ grid-template-columns:1fr; } }
 
 /* 17. PERFORMANCE METRICS */
-.metrics-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:var(--gap); max-width:800px; }
+.metrics-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:var(--gap); max-width:800px; margin:0 auto; }
 .metric-card { background:var(--card-bg); border:1px solid var(--card-border); border-left:3px solid var(--accent); padding:20px 22px; border-radius:var(--r); backdrop-filter:blur(6px); transition:border-color .25s, transform .25s, box-shadow .25s; }
 .metric-card:hover { border-color:var(--accent); transform:translateY(-4px); box-shadow:0 8px 28px var(--card-glow); }
 .metric-card h3 { color:var(--accent); font-size:14px; margin-bottom:10px; }
@@ -457,7 +460,7 @@ nav {
 @media(max-width:680px){ .metrics-grid{ grid-template-columns:1fr; } }
 
 /* 18. EDUCATION & CERTIFICATIONS */
-.education-box { background:rgba(0,255,170,.02); border:1px solid var(--card-border); border-radius:var(--r); padding:22px 26px; backdrop-filter:blur(8px); max-width:820px; }
+.education-box { background:rgba(0,255,170,.02); border:1px solid var(--card-border); border-radius:var(--r); padding:22px 26px; backdrop-filter:blur(8px); max-width:820px; margin:0 auto; }
 .edu-list { list-style:none; margin:10px 0; }
 .edu-list li { display:flex; align-items:flex-start; flex-wrap:wrap; gap:10px; margin-bottom:14px; font-size:13.5px; color:rgba(255,255,255,.82); padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,.04); }
 .edu-list li:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }

@@ -421,19 +421,17 @@
 
             <div class="bio-card">
                 <span class="command">whoami</span>
-                <p>Systems-focused <strong>C++ Engineer</strong> building low-latency, high-performance software.
-                    Specialized in Linux internals, concurrency, lock-free systems, and exchange-style trading engines.
-                </p>
+                <p>Balanced backend-focused engineer with strong modern C++17/23 expertise and a systems mindset. Building performance-critical C++ software while learning Spring Boot backend APIs, targeting fintech, investment banking, and backend engineering roles.</p>
             </div>
 
             <div class="bio-card">
                 <span class="command">skills --list</span>
                 <ul class="terminal-list">
-                    <li>Languages: C++17/20, C, Java</li>
-                    <li>Linux &bull; POSIX &bull; fork/exec &bull; IPC &bull; Memory Mgmt</li>
-                    <li>Mutex &bull; Condition Vars &bull; std::atomic &bull; Lock-Free</li>
-                    <li>TCP/IP &bull; Sockets &bull; High-Throughput Messaging</li>
-                    <li>Git &bull; CMake &bull; GTest &bull; AddressSanitizer</li>
+                    <li>Languages: C++17/23, Java, SQL</li>
+                    <li>Backend: Spring Boot, REST APIs, microservices, Linux, POSIX</li>
+                    <li>Concurrency: std::atomic, lock-free design, multithreading, synchronization</li>
+                    <li>Networking: TCP/IP, sockets, high-throughput messaging</li>
+                    <li>Tools: Git, CMake, GTest, AddressSanitizer, Linux CLI</li>
                 </ul>
             </div>
 
@@ -540,135 +538,124 @@
 
     <!-- PROJECTS + SKILLS -->
     <section id="skills" class="section skills-section">
-        <h2 class="section-title">// PROJECTS</h2>
-        <div class="projects-grid">
+        <h2 class="section-title">// PROJECTS &AMP; SKILLS</h2>
+        <p class="section-description">A complete view of my engineering work: existing system-level C++ projects, new architecture-focused repos, and the technical stack behind them. Everything is arranged so the section is compact and visually balanced.</p>
 
+        <h3 class="subsection-title">// EXISTING SYSTEM PROJECTS</h3>
+        <div class="projects-grid">
             <div class="skill-card">
                 <h3 class="skill-title">
                     High-Frequency Order Matching Engine
-                    <a href="https://gitlab.com/shivamkachhadiya/stock-order-matching-engine-cpp.git" target="_blank"
-                        rel="noopener" class="github-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gitlab.svg"
-                            alt="GitLab" />
-                        <div class="github-popup"><strong>GitLab Repo</strong><br>Matching Engine Source<br>Click to
-                            open &rarr;</div>
+                    <a href="https://gitlab.com/shivamkachhadiya/stock-order-matching-engine-cpp.git" target="_blank" rel="noopener" class="github-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gitlab.svg" alt="GitLab" />
+                        <div class="github-popup"><strong>GitLab Repo</strong><br>Matching Engine Source<br>Click to open &rarr;</div>
                     </a>
                 </h3>
-                <p>
-                    Built a production-grade exchange-style order matching engine.<br>
-                    Handles 1M+ orders with O(1) operations and microsecond latency.<br>
-                    Multithreaded architecture with zero hot-path heap allocations.<br>
-                    Simulates real-world HFT trading infrastructure.<br><br>
-                    <strong>Why this matters:</strong> Directly replicates the core engine inside every real HFT and
-                    exchange platform.
-                </p>
+                <p>Built a production-grade exchange-style order matching engine with microsecond latency, O(1) order processing, and multi-threaded feed handling. This proves my knowledge of HFT systems, low-latency execution, and match engine architecture.</p>
             </div>
 
             <div class="skill-card">
                 <h3 class="skill-title">
                     Lock-Free Messaging Framework
-                    <a href="https://gitlab.com/shivamkachhadiya/lock-free-messaging-frame-work-in-cpp.git"
-                        target="_blank" rel="noopener" class="github-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gitlab.svg"
-                            alt="GitLab" />
-                        <div class="github-popup"><strong>GitLab Repo</strong><br>Lock-Free Queue Code<br>Click to open
-                            &rarr;</div>
+                    <a href="https://gitlab.com/shivamkachhadiya/lock-free-messaging-frame-work-in-cpp.git" target="_blank" rel="noopener" class="github-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gitlab.svg" alt="GitLab" />
+                        <div class="github-popup"><strong>GitLab Repo</strong><br>Lock-Free Queue Code<br>Click to open &rarr;</div>
                     </a>
                 </h3>
-                <p>
-                    Designed a lock-free SPSC ring buffer using std::atomic.<br>
-                    Achieves 10&ndash;20M+ messages/sec with sub-microsecond latency.<br>
-                    alignas(64) cache-aware design eliminating false sharing.<br>
-                    Zero-copy preallocated buffers for maximum throughput.<br><br>
-                    <strong>Why this matters:</strong> Lock-free IPC is a critical bottleneck in any low-latency
-                    pipeline.
-                </p>
+                <p>Designed a lock-free SPSC ring buffer with cache-line alignment and zero-copy buffer management for ultra-high throughput. This project highlights my system-level concurrency and performance-focused engineering.</p>
             </div>
 
             <div class="skill-card">
                 <h3 class="skill-title">
                     Linux Command Line Shell
-                    <a href="https://gitlab.com/shivamkachhadiya/low-latency-linux-cml.git" target="_blank"
-                        rel="noopener" class="github-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gitlab.svg"
-                            alt="GitLab" />
-                        <div class="github-popup"><strong>GitLab Repo</strong><br>Shell Implementation<br>Click to open
-                            &rarr;</div>
+                    <a href="https://gitlab.com/shivamkachhadiya/low-latency-linux-cml.git" target="_blank" rel="noopener" class="github-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gitlab.svg" alt="GitLab" />
+                        <div class="github-popup"><strong>GitLab Repo</strong><br>Shell Implementation<br>Click to open &rarr;</div>
                     </a>
                 </h3>
-                <p>
-                    Developed a Unix-like shell implementing full process lifecycle.<br>
-                    fork/exec/wait &bull; pipes &bull; I/O redirection &bull; job control.<br>
-                    Built-in commands: cd, pwd, ls, history, cp, cat.<br>
-                    Modular CMake build, tested Linux + WSL.<br><br>
-                    <strong>Why this matters:</strong> Proves deep OS-level knowledge essential for systems and HFT
-                    roles.
-                </p>
+                <p>Implemented a Unix-like shell with process lifecycle management, pipes, I/O redirection, and job control. This demonstrates a strong foundation in Linux internals and systems programming.</p>
             </div>
         </div>
 
-        <br>
-        <h2 class="section-title">// SYSTEM_STACK</h2>
+        <h3 class="subsection-title">// NEW FEATURED REPOSITORIES</h3>
+        <div class="projects-grid">
+            <div class="skill-card">
+                <h3 class="skill-title">
+                    Low Level Design in C++
+                    <a href="https://github.com/shivamkachhadiya/Low_Level_Design_In_CPP" target="_blank" rel="noopener" class="github-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" />
+                        <div class="github-popup"><strong>GitHub Repo</strong><br>Low Level Design in C++<br>Click to open &rarr;</div>
+                    </a>
+                </h3>
+                <p>Architected reusable C++ components with SOLID design patterns, clean class hierarchies, and product-quality documentation. Demonstrates system-level thinking and maintainable architecture for production code.</p>
+            </div>
 
+            <div class="skill-card">
+                <h3 class="skill-title">
+                    OS &amp; Concurrency
+                    <a href="https://github.com/shivamkachhadiya/Os_And_Concurrency" target="_blank" rel="noopener" class="github-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" />
+                        <div class="github-popup"><strong>GitHub Repo</strong><br>OS + Concurrency Code<br>Click to open &rarr;</div>
+                    </a>
+                </h3>
+                <p>Developed operating system and concurrency examples in C++ covering threads, synchronization, deadlock management, and process control. This repo showcases my OS-level problem solving and low-latency design skills.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3 class="skill-title">
+                    ZOMATO LLD
+                    <a href="https://github.com/shivamkachhadiya/ZOMATO_LLD" target="_blank" rel="noopener" class="github-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" />
+                        <div class="github-popup"><strong>GitHub Repo</strong><br>Zomato Low Level Design<br>Click to open &rarr;</div>
+                    </a>
+                </h3>
+                <p>Designed a scalable restaurant ordering system with modular components, event-driven flow, and product-oriented architecture. Reinforces your skills in software design and system decomposition.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">// TECHNICAL STACK</h2>
         <div class="skills-grid primary">
             <div class="skill-card wide">
                 <h3 class="skill-title">
-                    Core Language &ndash; C++
-                    <a href="https://github.com/shivamkachhadiya/Complete-Modern-Cpp-Cpp-11-14-17-.git" target="_blank"
-                        rel="noopener" class="github-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
-                            alt="GitHub" />
-                        <div class="github-popup"><strong>GitHub Repo</strong><br>Modern C++ Notes<br>C++11/14/17
-                            Practice<br>Click to open &rarr;</div>
+                    C++ &amp; Systems Engineering
+                    <a href="https://github.com/shivamkachhadiya/Complete-Modern-Cpp-Cpp-11-14-17-.git" target="_blank" rel="noopener" class="github-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" />
+                        <div class="github-popup"><strong>GitHub Repo</strong><br>Modern C++ Notes<br>C++11/14/17 Practice<br>Click to open &rarr;</div>
                     </a>
                 </h3>
-                <p>Modern C++17/20 &bull; STL &bull; Templates &bull; OOP &bull; Design Patterns &bull; RAII &bull;
-                    Smart Pointers &bull; Performance Optimization</p>
+                <p>Low-latency C++17/20 development, lock-free concurrency, cache-aware memory design, multithreading, and Linux internals for performance-critical systems.</p>
             </div>
 
             <div class="skill-card wide">
                 <h3 class="skill-title">
-                    Data Structures &amp; Algorithms
-                    <a href="https://leetcode.com/u/kshivay/" target="_blank" rel="noopener" class="leetcode-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/leetcode.svg"
-                            alt="LeetCode" />
-                        <div class="leetcode-popup"><strong>LeetCode</strong><br>@kshivay<br>385+ solved<br>Click to
-                            open &rarr;</div>
+                    Algorithms &amp; LeetCode
+                    <a href="https://leetcode.com/u/shivamkachhadiya/" target="_blank" rel="noopener" class="leetcode-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/leetcode.svg" alt="LeetCode" />
+                        <div class="leetcode-popup"><strong>LeetCode</strong><br>@shivamkachhadiya<br>480+ solved<br>Click to open &rarr;</div>
                     </a>
                 </h3>
-                <p>385+ problems solved &bull; Trees &bull; Graphs &bull; Heaps &bull; DP &bull; Greedy &bull;
-                    Complexity Optimization</p>
+                <p>Strong problem solving in graphs, dynamic programming, greedy algorithms, and data structures with well-tested C++ implementations and interview-ready technical depth.</p>
             </div>
 
             <div class="skill-card small">
-                <h3 class="skill-title">Tools</h3>
-                <p>Git &bull; GitHub &bull; GitLab &bull; CMake &bull; g++ &bull; GTest &bull; AddressSanitizer &bull;
-                    ThreadSanitizer &bull; Linux CLI</p>
+                <h3 class="skill-title">Tools &amp; Workflow</h3>
+                <p>Git &bull; GitHub &bull; GitLab &bull; CMake &bull; g++ &bull; GTest &bull; AddressSanitizer &bull; ThreadSanitizer &bull; Linux CLI</p>
             </div>
         </div>
 
         <div class="projects-grid" style="margin-top:20px;">
             <div class="skill-card">
-                <h3 class="skill-title">
-                    Operating Systems
-                    <a href="https://github.com/shivamkachhadiya/Low_Latency_Modern_Cpp/tree/main/CONCURRENCY_MOST_MOST_MOST_IMP/MULTIPLE_THREADS_IMP"
-                        target="_blank" rel="noopener" class="github-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"
-                            alt="GitHub" />
-                        <div class="github-popup">OS + Concurrency Code<br>Threads &bull; Locks &bull; Sync<br>Click to
-                            open &rarr;</div>
-                    </a>
-                </h3>
+                <h3 class="skill-title">Operating Systems</h3>
                 <p>Threads &bull; Synchronization &bull; Memory Management &bull; Paging &bull; TLB &bull; Deadlocks</p>
             </div>
 
             <div class="skill-card">
-                <h3>Computer Networks</h3>
+                <h3 class="skill-title">Computer Networks</h3>
                 <p>TCP/IP &bull; Flow Control &bull; Sockets &bull; Client-Server Architecture</p>
             </div>
 
             <div class="skill-card">
-                <h3>Databases</h3>
+                <h3 class="skill-title">Databases</h3>
                 <p>SQL &bull; ACID &bull; Transactions &bull; Concurrency Control &bull; Indexing</p>
             </div>
         </div>
