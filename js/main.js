@@ -52,13 +52,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ======================================================
-       3. SCROLL REVEAL
+       3. SCROLL REVEAL + STAGGER
+       - Add `reveal` class to containers and child cards
+       - Stagger child reveals for rhythm
        ====================================================== */
     const revealObs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+        entries.forEach(entry => {
+            const el = entry.target;
+            if (!entry.isIntersecting) return;
+            // Activate container or element
+            el.classList.add('active');
+
+            // If container holds multiple reveal children, stagger them
+            const staggerChildren = el.querySelectorAll('.skill-card, .bio-card, .metric-card, .edu-list li');
+            if (staggerChildren.length) {
+                staggerChildren.forEach((child, i) => {
+                    child.classList.add('reveal');
+                    child.style.transitionDelay = `${i * 70}ms`;
+                    // add active with slight timeout to allow delay to take effect
+                    setTimeout(() => child.classList.add('active'), i * 70 + 20);
+                });
+            }
+        });
     }, { threshold: 0.12 });
 
-    document.querySelectorAll('.education-box, .bio-card, .metric-card, .skill-card, .section-title').forEach(el => {
+    // observe main containers and atomic elements
+    const revealTargets = document.querySelectorAll('.projects-grid, .about-grid-3, .metrics-grid, .education-box, .bio-card, .metric-card, .skill-card, .section-title');
+    revealTargets.forEach(el => {
         el.classList.add('reveal');
         revealObs.observe(el);
     });
@@ -99,6 +119,31 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ======================================================
        5. ACTIVE NAV HIGHLIGHT ON SCROLL
        ====================================================== */
+    /* ======================================================
+       4.5 CARD HOVER TILT (pointer-fine only)
+       - subtle 3D tilt on `.skill-card` following cursor
+       - uses `hover-effect` class for sheen activation
+       ====================================================== */
+    if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mouseenter', () => card.classList.add('hover-effect'));
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('hover-effect');
+                card.style.transform = '';
+            });
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+                const cx = rect.width / 2; const cy = rect.height / 2;
+                const dx = (x - cx) / (rect.width / 2);
+                const dy = (y - cy) / (rect.height / 2);
+                const rotY = (dx * -6).toFixed(2);
+                const rotX = (dy * 6).toFixed(2);
+                // include a small lift to match original hover intent
+                card.style.transform = `translateZ(0) translateY(-6px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+            });
+        });
+    }
     const sections = document.querySelectorAll('section[id], footer[id]');
     const links    = document.querySelectorAll('.nav-links a[href^="#"]');
 
