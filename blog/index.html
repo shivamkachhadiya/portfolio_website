@@ -89,19 +89,55 @@
             <h1>DSA & Systems Blog</h1>
             <p>300+ LeetCode • C++ • Dynamic Programming • Systems</p>
         </section>
- <div class="demo-section">
-    <h2>⚡ TradeShield Live API Terminal (Local Engine Demo)</h2>
-    <p>Status: Local Engine Online</p>
-        <span class="tag"><p>Make Sure Shivam's SpringBoot Application is Running and NGROK Command line also should be Active for this API Application</p></span> 
 
-    
-    <iframe 
-        src="https://calm-victory-pouring.ngrok-free.dev/swagger-ui/index.html" 
-        width="100%" 
-        height="700px" 
-        style="border: 2px solid #10b981; border-radius: 12px;">
-    </iframe>
-</div>
+        <!-- ⭐ FEATURED PROJECTS SECTION ⭐ -->
+        <section class="featured-projects">
+            <h2 style="text-align: center; margin-bottom: 40px; color: #00ffa2; font-size: 2rem;">🏆 Featured Projects</h2>
+            
+            <!-- TradeShield Premium Card -->
+            <div class="premium-card">
+                <div class="premium-badge">⭐ PRODUCTION READY</div>
+                
+                <h3 class="premium-title">TradeShield: High-Concurrency Order Management & Risk Validation Engine</h3>
+                
+                <div class="tech-stack">
+                    <span class="tech-badge">Java 25</span>
+                    <span class="tech-badge">Spring Boot 3.5</span>
+                    <span class="tech-badge">MySQL</span>
+                    <span class="tech-badge">JWT</span>
+                    <span class="tech-badge">Finnhub API</span>
+                    <span class="tech-badge">Concurrency</span>
+                </div>
+
+                <div class="premium-content">
+                    <h4>🎯 Core Technical Achievements</h4>
+                    <ul class="achievements-list">
+                        <li><strong>Race Condition Elimination:</strong> Engineered PESSIMISTIC_WRITE database locks on user repository ensuring atomic balance-checking and transactional integrity under multi-threaded loads</li>
+                        <li><strong>Real-Time Anti-Cheat Mechanism:</strong> Integrated Finnhub REST API with asynchronous pricing layer to override client-side price inputs, preventing market manipulation</li>
+                        <li><strong>Design Pattern Architecture:</strong> Implemented Factory Pattern (OrderFactory) for decoupling MARKET vs. LIMIT order creation logic</li>
+                        <li><strong>Stateless Security Framework:</strong> JWT token-based authentication middleware with global @RestControllerAdvice exception handler</li>
+                        <li><strong>High-Throughput Processing:</strong> Multi-threaded order validation, execution and recording system handling complex financial transactions</li>
+                    </ul>
+
+                    <h4 style="margin-top: 20px;">💡 System Architecture</h4>
+                    <p style="font-size: 0.9rem; background: #0d1117; padding: 12px; border-radius: 8px; font-family: monospace; line-height: 1.8;">
+                        POST /api/orders (JWT) → JwtFilter → OrderController → OrderService<br/>
+                        → OrderFactory (MARKET/LIMIT) → Finnhub API (live pricing)<br/>
+                        → RiskEngineService → DB Pessimistic Lock → Balance/Portfolio Validation<br/>
+                        → EXECUTED/REJECTED → Response
+                    </p>
+
+                    <div class="project-links">
+                        <a href="https://github.com/shivamkachhadiya/TradeShield-High-Concurrency-Order-Management-Risk-Validation-Engine" 
+                           target="_blank" 
+                           class="btn-github">
+                           📌 View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="posts">
             <a class="card" href="./posts/os_linux_cheatsheet.html">
 

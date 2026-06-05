@@ -1,0 +1,32 @@
+/* PROJECTS GRID COMPACT STYLING */
+.projects-grid .skill-card {
+    height: auto !important;
+    padding: 22px 20px;
+}
+
+.projects-grid .skill-card:not(.premium-project) {
+    padding: 22px 20px;
+}
+
+.projects-grid .skill-card.premium-project {
+    padding: 22px 20px;
+}
+
+.skill-card p {
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.skill-card p:last-child {
+    margin-bottom: 0;
+}
+
+.skill-title {
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.premium-badge-mini {
+    margin-bottom: 10px;
+}
